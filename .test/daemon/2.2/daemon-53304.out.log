@@ -1,0 +1,366 @@
+10:50:04.808 [INFO] [org.gradle.launcher.daemon.server.Daemon] start() called on daemon - DefaultDaemonContext[uid=28150e65-d0aa-41ee-af2b-3d4c03bee650,javaHome=/Library/Java/JavaVirtualMachines/jdk1.8.0_25.jdk/Contents/Home,daemonRegistryDir=/Users/massy/.gradle/daemon,pid=53304,idleTimeout=120000,daemonOpts=-Xms128m,-Xmx512m,-Dfile.encoding=UTF-8,-Duser.country=US,-Duser.language=en,-Duser.variant]
+10:50:04.829 [DEBUG] [org.gradle.launcher.daemon.server.DaemonStateCoordinator] updating lastActivityAt to 1422611404828
+10:50:04.847 [DEBUG] [org.gradle.messaging.remote.internal.inet.InetAddressFactory] Adding IP addresses for network interface awdl0
+10:50:04.848 [DEBUG] [org.gradle.messaging.remote.internal.inet.InetAddressFactory] Is this a loopback interface? false
+10:50:04.849 [DEBUG] [org.gradle.messaging.remote.internal.inet.InetAddressFactory] Is this a multicast interface? true
+10:50:04.850 [DEBUG] [org.gradle.messaging.remote.internal.inet.InetAddressFactory] Adding remote address /fe80:0:0:0:a423:aff:fe93:7e22%awdl0
+10:50:04.851 [DEBUG] [org.gradle.messaging.remote.internal.inet.InetAddressFactory] Adding remote multicast interface awdl0
+10:50:04.853 [DEBUG] [org.gradle.messaging.remote.internal.inet.InetAddressFactory] Adding IP addresses for network interface en0
+10:50:04.854 [DEBUG] [org.gradle.messaging.remote.internal.inet.InetAddressFactory] Is this a loopback interface? false
+10:50:04.855 [DEBUG] [org.gradle.messaging.remote.internal.inet.InetAddressFactory] Is this a multicast interface? true
+10:50:04.856 [DEBUG] [org.gradle.messaging.remote.internal.inet.InetAddressFactory] Adding remote address /fe80:0:0:0:7a31:c1ff:fed7:44bc%en0
+10:50:04.858 [DEBUG] [org.gradle.messaging.remote.internal.inet.InetAddressFactory] Adding remote address /129.16.183.99
+10:50:04.859 [DEBUG] [org.gradle.messaging.remote.internal.inet.InetAddressFactory] Adding remote multicast interface en0
+10:50:04.861 [DEBUG] [org.gradle.messaging.remote.internal.inet.InetAddressFactory] Adding IP addresses for network interface lo0
+10:50:04.863 [DEBUG] [org.gradle.messaging.remote.internal.inet.InetAddressFactory] Is this a loopback interface? true
+10:50:04.863 [DEBUG] [org.gradle.messaging.remote.internal.inet.InetAddressFactory] Is this a multicast interface? true
+10:50:04.865 [DEBUG] [org.gradle.messaging.remote.internal.inet.InetAddressFactory] Ignoring remote address on loopback interface /fe80:0:0:0:0:0:0:1%lo0
+10:50:04.866 [DEBUG] [org.gradle.messaging.remote.internal.inet.InetAddressFactory] Adding loopback address /0:0:0:0:0:0:0:1
+10:50:04.867 [DEBUG] [org.gradle.messaging.remote.internal.inet.InetAddressFactory] Adding loopback address /127.0.0.1
+10:50:04.868 [DEBUG] [org.gradle.messaging.remote.internal.inet.InetAddressFactory] Adding loopback multicast interface lo0
+10:50:04.873 [DEBUG] [org.gradle.messaging.remote.internal.inet.TcpIncomingConnector] Listening on [9a7db627-9d72-4502-a00f-721d3ba1d139 port:59927, addresses:[/0:0:0:0:0:0:0:1, /127.0.0.1]].
+10:50:04.875 [DEBUG] [org.gradle.launcher.daemon.server.Daemon] Daemon starting at: Fri Jan 30 10:50:04 CET 2015, with address: [9a7db627-9d72-4502-a00f-721d3ba1d139 port:59927, addresses:[/0:0:0:0:0:0:0:1, /127.0.0.1]]
+10:50:04.876 [INFO] [org.gradle.launcher.daemon.server.DomainRegistryUpdater] Advertising the daemon address to the clients: [9a7db627-9d72-4502-a00f-721d3ba1d139 port:59927, addresses:[/0:0:0:0:0:0:0:1, /127.0.0.1]]
+10:50:04.876 [DEBUG] [org.gradle.launcher.daemon.server.DomainRegistryUpdater] Advertised daemon context: DefaultDaemonContext[uid=28150e65-d0aa-41ee-af2b-3d4c03bee650,javaHome=/Library/Java/JavaVirtualMachines/jdk1.8.0_25.jdk/Contents/Home,daemonRegistryDir=/Users/massy/.gradle/daemon,pid=53304,idleTimeout=120000,daemonOpts=-Xms128m,-Xmx512m,-Dfile.encoding=UTF-8,-Duser.country=US,-Duser.language=en,-Duser.variant]
+10:50:04.877 [DEBUG] [org.gradle.launcher.daemon.registry.PersistentDaemonRegistry] Storing daemon address: [9a7db627-9d72-4502-a00f-721d3ba1d139 port:59927, addresses:[/0:0:0:0:0:0:0:1, /127.0.0.1]], context: DefaultDaemonContext[uid=28150e65-d0aa-41ee-af2b-3d4c03bee650,javaHome=/Library/Java/JavaVirtualMachines/jdk1.8.0_25.jdk/Contents/Home,daemonRegistryDir=/Users/massy/.gradle/daemon,pid=53304,idleTimeout=120000,daemonOpts=-Xms128m,-Xmx512m,-Dfile.encoding=UTF-8,-Duser.country=US,-Duser.language=en,-Duser.variant]
+10:50:04.888 [DEBUG] [org.gradle.cache.internal.DefaultFileLockManager] Waiting to acquire exclusive lock on daemon addresses registry.
+10:50:04.892 [DEBUG] [org.gradle.cache.internal.DefaultFileLockManager] Lock acquired.
+10:50:04.894 [DEBUG] [org.gradle.cache.internal.DefaultFileLockManager] Releasing lock on daemon addresses registry.
+10:50:04.897 [DEBUG] [org.gradle.cache.internal.DefaultFileLockManager] Waiting to acquire exclusive lock on daemon addresses registry.
+10:50:04.898 [DEBUG] [org.gradle.cache.internal.DefaultFileLockManager] Lock acquired.
+10:50:04.924 [DEBUG] [org.gradle.cache.internal.DefaultFileLockManager] Releasing lock on daemon addresses registry.
+10:50:04.924 [LIFECYCLE] [org.gradle.launcher.daemon.server.Daemon] Daemon server started.
+10:50:04.926 [DEBUG] [org.gradle.launcher.daemon.bootstrap.DaemonStartupCommunication] Completed writing the daemon greeting. Closing streams...
+10:50:04.929 [DEBUG] [org.gradle.launcher.daemon.server.Daemon] requestStopOnIdleTimeout(120000 MILLISECONDS) called on daemon
+10:50:04.929 [DEBUG] [org.gradle.launcher.daemon.server.DaemonStateCoordinator] Idle timeout: waiting for daemon to stop or be idle for 120000ms
+10:50:04.931 [DEBUG] [org.gradle.launcher.daemon.server.DaemonStateCoordinator] Daemon is idle, sleeping until state change or idle timeout at Fri Jan 30 10:52:04 CET 2015
+10:50:04.972 [DEBUG] [org.gradle.messaging.remote.internal.inet.TcpIncomingConnector] Accepted connection from /0:0:0:0:0:0:0:1:59928 to /0:0:0:0:0:0:0:1:59927.
+10:50:05.024 [DEBUG] [org.gradle.launcher.daemon.server.SynchronizedDispatchConnection] thread 14: received class org.gradle.launcher.daemon.protocol.BuildAndStop
+10:50:05.024 [DEBUG] [org.gradle.launcher.daemon.server.DefaultDaemonConnection] Received non-IO message from client: BuildAndStop{id=634979ad-33a1-4d88-9bfc-e2a5482c57e8.1, currentDir=/Users/massy/Desktop/libgdx temp}
+10:50:05.025 [INFO] [org.gradle.launcher.daemon.server.DefaultIncomingConnectionHandler] Received command: BuildAndStop{id=634979ad-33a1-4d88-9bfc-e2a5482c57e8.1, currentDir=/Users/massy/Desktop/libgdx temp}.
+10:50:05.026 [DEBUG] [org.gradle.launcher.daemon.server.DefaultIncomingConnectionHandler] Starting executing command: BuildAndStop{id=634979ad-33a1-4d88-9bfc-e2a5482c57e8.1, currentDir=/Users/massy/Desktop/libgdx temp} with connection: socket connection from /0:0:0:0:0:0:0:1:59927 to /0:0:0:0:0:0:0:1:59928.
+10:50:05.034 [DEBUG] [org.gradle.launcher.daemon.server.DaemonStateCoordinator] Command execution: started DaemonCommandExecution[command = BuildAndStop{id=634979ad-33a1-4d88-9bfc-e2a5482c57e8.1, currentDir=/Users/massy/Desktop/libgdx temp}, connection = org.gradle.launcher.daemon.server.DefaultDaemonConnection@4479e86a] after 0.0 minutes of idle
+10:50:05.035 [INFO] [org.gradle.launcher.daemon.server.DomainRegistryUpdater] Marking the daemon as busy, address: [9a7db627-9d72-4502-a00f-721d3ba1d139 port:59927, addresses:[/0:0:0:0:0:0:0:1, /127.0.0.1]]
+10:50:05.036 [DEBUG] [org.gradle.launcher.daemon.registry.PersistentDaemonRegistry] Marking busy by address: [9a7db627-9d72-4502-a00f-721d3ba1d139 port:59927, addresses:[/0:0:0:0:0:0:0:1, /127.0.0.1]]
+10:50:05.037 [DEBUG] [org.gradle.cache.internal.DefaultFileLockManager] Waiting to acquire exclusive lock on daemon addresses registry.
+10:50:05.037 [DEBUG] [org.gradle.cache.internal.DefaultFileLockManager] Lock acquired.
+10:50:05.042 [DEBUG] [org.gradle.cache.internal.DefaultFileLockManager] Releasing lock on daemon addresses registry.
+10:50:05.043 [DEBUG] [org.gradle.launcher.daemon.server.DaemonStateCoordinator] updating lastActivityAt to 1422611405043
+10:50:05.044 [DEBUG] [org.gradle.launcher.daemon.server.DaemonStateCoordinator] Daemon is busy, sleeping until state changes.
+10:50:05.044 [INFO] [org.gradle.launcher.daemon.server.exec.StartBuildOrRespondWithBusy] Daemon is about to start building BuildAndStop{id=634979ad-33a1-4d88-9bfc-e2a5482c57e8.1, currentDir=/Users/massy/Desktop/libgdx temp}. Dispatching build started information...
+10:50:05.045 [DEBUG] [org.gradle.launcher.daemon.server.SynchronizedDispatchConnection] thread 16: dispatching class org.gradle.launcher.daemon.protocol.BuildStarted
+10:50:05.050 [DEBUG] [org.gradle.launcher.daemon.server.exec.EstablishBuildEnvironment] Configuring env variables: {PATH=/usr/bin:/bin:/usr/sbin:/sbin, JAVA_ARCH=x86_64, SHELL=/bin/bash, APP_ICON_53295=/Users/massy/Desktop/libgdx temp/media/gradle.icns, OLDPWD=/Users/massy/Desktop/libgdx temp, USER=massy, TMPDIR=/var/folders/97/5l5rlpf51d1gbn9hg0s34cs00000gn/T/, SSH_AUTH_SOCK=/private/tmp/com.apple.launchd.YlADUpGOZn/Listeners, DISPLAY=/private/tmp/com.apple.launchd.izo9ye77EA/org.macosforge.xquartz:0, XPC_FLAGS=0x0, APP_NAME_53295=Gradle, __CF_USER_TEXT_ENCODING=0x1F5:0x0:0x0, Apple_PubSub_Socket_Render=/private/tmp/com.apple.launchd.PEp7OVcCWW/Render, JAVA_MAIN_CLASS_53295=org.gradle.wrapper.GradleWrapperMain, com.apple.java.jvmTask=CommandLine, LOGNAME=massy, XPC_SERVICE_NAME=0, PWD=/Users/massy/Desktop/libgdx temp, HOME=/Users/massy, SHLVL=0}
+10:50:05.064 [INFO] [org.gradle.launcher.daemon.server.exec.LogToClient] About to start relaying all logs to the client via the connection.
+10:50:05.064 [INFO] [org.gradle.launcher.daemon.server.exec.LogToClient] The client will now receive all logging from the daemon (pid: 53304). The daemon log file: /Users/massy/.gradle/daemon/2.2/daemon-53304.out.log
+10:50:05.066 [DEBUG] [org.gradle.launcher.daemon.server.exec.StartStopIfBuildAndStop] Requesting daemon stop after processing BuildAndStop{id=634979ad-33a1-4d88-9bfc-e2a5482c57e8.1, currentDir=/Users/massy/Desktop/libgdx temp}
+10:50:05.066 [DEBUG] [org.gradle.launcher.daemon.server.DaemonStateCoordinator] Stop as soon as idle requested. The daemon is busy: true
+10:50:05.067 [DEBUG] [org.gradle.launcher.daemon.server.DaemonStateCoordinator] Idle timeout: daemon stop has been requested. Sleeping until state changes.
+10:50:05.068 [DEBUG] [org.gradle.launcher.daemon.server.exec.ExecuteBuild] The daemon has started executing the build.
+10:50:05.069 [INFO] [org.gradle.launcher.daemon.server.exec.ExecuteBuild] Executing build with daemon context: DefaultDaemonContext[uid=28150e65-d0aa-41ee-af2b-3d4c03bee650,javaHome=/Library/Java/JavaVirtualMachines/jdk1.8.0_25.jdk/Contents/Home,daemonRegistryDir=/Users/massy/.gradle/daemon,pid=53304,idleTimeout=120000,daemonOpts=-Xms128m,-Xmx512m,-Dfile.encoding=UTF-8,-Duser.country=US,-Duser.language=en,-Duser.variant]
+10:50:05.563 [DEBUG] [org.gradle.internal.resource.transport.http.JavaSystemPropertiesHttpProxySettings] Found java system property 'http.nonProxyHosts': local|*.local|169.254/16|*.169.254/16. Will ignore proxy settings for these hosts.
+Configuration on demand is an incubating feature.
+Download https://repo1.maven.org/maven2/com/android/tools/build/gradle/1.0.0/gradle-1.0.0.pom
+Download https://repo1.maven.org/maven2/org/robovm/robovm-gradle-plugin/1.0.0-beta-03/robovm-gradle-plugin-1.0.0-beta-03.pom
+Download https://repo1.maven.org/maven2/com/android/tools/build/builder/1.0.0/builder-1.0.0.pom
+Download https://repo1.maven.org/maven2/com/android/tools/lint/lint/24.0.0/lint-24.0.0.pom
+Download https://repo1.maven.org/maven2/net/sf/proguard/proguard-gradle/5.1/proguard-gradle-5.1.pom
+Download https://repo1.maven.org/maven2/net/sf/proguard/proguard-parent/5.1/proguard-parent-5.1.pom
+Download https://repo1.maven.org/maven2/org/robovm/robovm-dist-compiler/1.0.0-beta-03/robovm-dist-compiler-1.0.0-beta-03.pom
+Download https://repo1.maven.org/maven2/org/robovm/robovm-dist-parent/1.0.0-beta-03/robovm-dist-parent-1.0.0-beta-03.pom
+Download https://repo1.maven.org/maven2/org/robovm/robovm-parent/1.0.0-beta-03/robovm-parent-1.0.0-beta-03.pom
+Download https://repo1.maven.org/maven2/org/sonatype/oss/oss-parent/7/oss-parent-7.pom
+Download https://repo1.maven.org/maven2/com/android/tools/sdk-common/24.0.0/sdk-common-24.0.0.pom
+Download https://repo1.maven.org/maven2/org/bouncycastle/bcprov-jdk15on/1.48/bcprov-jdk15on-1.48.pom
+Download https://repo1.maven.org/maven2/com/squareup/javawriter/2.5.0/javawriter-2.5.0.pom
+Download https://repo1.maven.org/maven2/com/android/tools/common/24.0.0/common-24.0.0.pom
+Download https://repo1.maven.org/maven2/com/android/tools/build/builder-test-api/1.0.0/builder-test-api-1.0.0.pom
+Download https://repo1.maven.org/maven2/com/android/tools/ddms/ddmlib/24.0.0/ddmlib-24.0.0.pom
+Download https://repo1.maven.org/maven2/com/android/tools/build/manifest-merger/24.0.0/manifest-merger-24.0.0.pom
+Download https://repo1.maven.org/maven2/com/android/tools/build/builder-model/1.0.0/builder-model-1.0.0.pom
+Download https://repo1.maven.org/maven2/com/android/tools/sdklib/24.0.0/sdklib-24.0.0.pom
+Download https://repo1.maven.org/maven2/org/bouncycastle/bcpkix-jdk15on/1.48/bcpkix-jdk15on-1.48.pom
+Download https://repo1.maven.org/maven2/com/android/tools/lint/lint-checks/24.0.0/lint-checks-24.0.0.pom
+Download https://repo1.maven.org/maven2/org/eclipse/jdt/core/compiler/ecj/4.2.2/ecj-4.2.2.pom
+Download https://repo1.maven.org/maven2/net/sf/proguard/proguard-base/5.1/proguard-base-5.1.pom
+Download https://repo1.maven.org/maven2/com/google/guava/guava/17.0/guava-17.0.pom
+Download https://repo1.maven.org/maven2/com/google/guava/guava-parent/17.0/guava-parent-17.0.pom
+Download https://repo1.maven.org/maven2/net/sf/kxml/kxml2/2.3.0/kxml2-2.3.0.pom
+Download https://repo1.maven.org/maven2/com/android/tools/layoutlib/layoutlib-api/24.0.0/layoutlib-api-24.0.0.pom
+Download https://repo1.maven.org/maven2/org/apache/httpcomponents/httpclient/4.1.1/httpclient-4.1.1.pom
+Download https://repo1.maven.org/maven2/org/apache/httpcomponents/httpcomponents-client/4.1.1/httpcomponents-client-4.1.1.pom
+Download https://repo1.maven.org/maven2/org/apache/httpcomponents/project/4.1.1/project-4.1.1.pom
+Download https://repo1.maven.org/maven2/org/apache/httpcomponents/httpmime/4.1/httpmime-4.1.pom
+Download https://repo1.maven.org/maven2/org/apache/httpcomponents/httpcomponents-client/4.1/httpcomponents-client-4.1.pom
+Download https://repo1.maven.org/maven2/com/android/tools/dvlib/24.0.0/dvlib-24.0.0.pom
+Download https://repo1.maven.org/maven2/org/apache/commons/commons-compress/1.8.1/commons-compress-1.8.1.pom
+Download https://repo1.maven.org/maven2/org/apache/commons/commons-parent/33/commons-parent-33.pom
+Download https://repo1.maven.org/maven2/org/apache/apache/13/apache-13.pom
+Download https://repo1.maven.org/maven2/com/android/tools/lint/lint-api/24.0.0/lint-api-24.0.0.pom
+Download https://repo1.maven.org/maven2/org/ow2/asm/asm-analysis/4.0/asm-analysis-4.0.pom
+Download https://repo1.maven.org/maven2/org/ow2/asm/asm-parent/4.0/asm-parent-4.0.pom
+Download https://repo1.maven.org/maven2/org/ow2/ow2/1.3/ow2-1.3.pom
+Download https://repo1.maven.org/maven2/org/apache/httpcomponents/httpcore/4.1/httpcore-4.1.pom
+Download https://repo1.maven.org/maven2/org/apache/httpcomponents/httpcomponents-core/4.1/httpcomponents-core-4.1.pom
+Download https://repo1.maven.org/maven2/commons-logging/commons-logging/1.1.1/commons-logging-1.1.1.pom
+Download https://repo1.maven.org/maven2/org/apache/commons/commons-parent/5/commons-parent-5.pom
+Download https://repo1.maven.org/maven2/org/apache/apache/4/apache-4.pom
+Download https://repo1.maven.org/maven2/commons-codec/commons-codec/1.4/commons-codec-1.4.pom
+Download https://repo1.maven.org/maven2/org/apache/commons/commons-parent/11/commons-parent-11.pom
+Download https://repo1.maven.org/maven2/org/ow2/asm/asm/4.0/asm-4.0.pom
+Download https://repo1.maven.org/maven2/com/android/tools/external/lombok/lombok-ast/0.2.2/lombok-ast-0.2.2.pom
+Download https://repo1.maven.org/maven2/org/ow2/asm/asm-tree/4.0/asm-tree-4.0.pom
+Download https://repo1.maven.org/maven2/com/android/tools/build/gradle/1.0.0/gradle-1.0.0.jar
+Download https://repo1.maven.org/maven2/org/robovm/robovm-gradle-plugin/1.0.0-beta-03/robovm-gradle-plugin-1.0.0-beta-03.jar
+Download https://repo1.maven.org/maven2/com/android/tools/build/builder/1.0.0/builder-1.0.0.jar
+Download https://repo1.maven.org/maven2/com/android/tools/lint/lint/24.0.0/lint-24.0.0.jar
+Download https://repo1.maven.org/maven2/net/sf/proguard/proguard-gradle/5.1/proguard-gradle-5.1.jar
+Download https://repo1.maven.org/maven2/org/robovm/robovm-dist-compiler/1.0.0-beta-03/robovm-dist-compiler-1.0.0-beta-03.jar
+Download https://repo1.maven.org/maven2/com/android/tools/sdk-common/24.0.0/sdk-common-24.0.0.jar
+Download https://repo1.maven.org/maven2/org/bouncycastle/bcprov-jdk15on/1.48/bcprov-jdk15on-1.48.jar
+Download https://repo1.maven.org/maven2/com/squareup/javawriter/2.5.0/javawriter-2.5.0.jar
+Download https://repo1.maven.org/maven2/com/android/tools/common/24.0.0/common-24.0.0.jar
+Download https://repo1.maven.org/maven2/com/android/tools/build/builder-test-api/1.0.0/builder-test-api-1.0.0.jar
+Download https://repo1.maven.org/maven2/com/android/tools/ddms/ddmlib/24.0.0/ddmlib-24.0.0.jar
+Download https://repo1.maven.org/maven2/com/android/tools/build/manifest-merger/24.0.0/manifest-merger-24.0.0.jar
+Download https://repo1.maven.org/maven2/com/android/tools/build/builder-model/1.0.0/builder-model-1.0.0.jar
+Download https://repo1.maven.org/maven2/com/android/tools/sdklib/24.0.0/sdklib-24.0.0.jar
+Download https://repo1.maven.org/maven2/org/bouncycastle/bcpkix-jdk15on/1.48/bcpkix-jdk15on-1.48.jar
+Download https://repo1.maven.org/maven2/com/android/tools/lint/lint-checks/24.0.0/lint-checks-24.0.0.jar
+Download https://repo1.maven.org/maven2/org/eclipse/jdt/core/compiler/ecj/4.2.2/ecj-4.2.2.jar
+Download https://repo1.maven.org/maven2/net/sf/proguard/proguard-base/5.1/proguard-base-5.1.jar
+Download https://repo1.maven.org/maven2/com/google/guava/guava/17.0/guava-17.0.jar
+Download https://repo1.maven.org/maven2/net/sf/kxml/kxml2/2.3.0/kxml2-2.3.0.jar
+Download https://repo1.maven.org/maven2/com/android/tools/layoutlib/layoutlib-api/24.0.0/layoutlib-api-24.0.0.jar
+Download https://repo1.maven.org/maven2/org/apache/httpcomponents/httpclient/4.1.1/httpclient-4.1.1.jar
+Download https://repo1.maven.org/maven2/org/apache/httpcomponents/httpmime/4.1/httpmime-4.1.jar
+Download https://repo1.maven.org/maven2/com/android/tools/dvlib/24.0.0/dvlib-24.0.0.jar
+Download https://repo1.maven.org/maven2/org/apache/commons/commons-compress/1.8.1/commons-compress-1.8.1.jar
+Download https://repo1.maven.org/maven2/com/android/tools/lint/lint-api/24.0.0/lint-api-24.0.0.jar
+Download https://repo1.maven.org/maven2/org/ow2/asm/asm-analysis/4.0/asm-analysis-4.0.jar
+Download https://repo1.maven.org/maven2/org/apache/httpcomponents/httpcore/4.1/httpcore-4.1.jar
+Download https://repo1.maven.org/maven2/commons-logging/commons-logging/1.1.1/commons-logging-1.1.1.jar
+Download https://repo1.maven.org/maven2/commons-codec/commons-codec/1.4/commons-codec-1.4.jar
+Download https://repo1.maven.org/maven2/org/ow2/asm/asm/4.0/asm-4.0.jar
+Download https://repo1.maven.org/maven2/com/android/tools/external/lombok/lombok-ast/0.2.2/lombok-ast-0.2.2.jar
+Download https://repo1.maven.org/maven2/org/ow2/asm/asm-tree/4.0/asm-tree-4.0.jar
+Download https://repo1.maven.org/maven2/com/badlogicgames/gdx/gdx-platform/1.5.3/gdx-platform-1.5.3.pom
+Download https://repo1.maven.org/maven2/com/badlogicgames/gdx/gdx-parent/1.5.3/gdx-parent-1.5.3.pom
+Download https://repo1.maven.org/maven2/org/sonatype/oss/oss-parent/5/oss-parent-5.pom
+Download https://repo1.maven.org/maven2/com/badlogicgames/gdx/gdx-box2d-platform/1.5.3/gdx-box2d-platform-1.5.3.pom
+Download https://repo1.maven.org/maven2/com/badlogicgames/gdx/gdx-bullet-platform/1.5.3/gdx-bullet-platform-1.5.3.pom
+Download https://repo1.maven.org/maven2/com/badlogicgames/gdx/gdx-freetype-platform/1.5.3/gdx-freetype-platform-1.5.3.pom
+Download https://repo1.maven.org/maven2/com/badlogicgames/gdx/gdx-bullet/1.5.3/gdx-bullet-1.5.3.pom
+Download https://repo1.maven.org/maven2/com/badlogicgames/gdx/gdx/1.5.3/gdx-1.5.3.pom
+Download https://repo1.maven.org/maven2/com/badlogicgames/gdx/gdx-platform/1.5.3/gdx-platform-1.5.3-natives-armeabi.jar
+Download https://repo1.maven.org/maven2/com/badlogicgames/gdx/gdx-platform/1.5.3/gdx-platform-1.5.3-natives-armeabi-v7a.jar
+Download https://repo1.maven.org/maven2/com/badlogicgames/gdx/gdx-platform/1.5.3/gdx-platform-1.5.3-natives-x86.jar
+Download https://repo1.maven.org/maven2/com/badlogicgames/gdx/gdx-box2d-platform/1.5.3/gdx-box2d-platform-1.5.3-natives-armeabi.jar
+Download https://repo1.maven.org/maven2/com/badlogicgames/gdx/gdx-box2d-platform/1.5.3/gdx-box2d-platform-1.5.3-natives-armeabi-v7a.jar
+Download https://repo1.maven.org/maven2/com/badlogicgames/gdx/gdx-box2d-platform/1.5.3/gdx-box2d-platform-1.5.3-natives-x86.jar
+Download https://repo1.maven.org/maven2/com/badlogicgames/gdx/gdx-bullet-platform/1.5.3/gdx-bullet-platform-1.5.3-natives-armeabi.jar
+Download https://repo1.maven.org/maven2/com/badlogicgames/gdx/gdx-bullet-platform/1.5.3/gdx-bullet-platform-1.5.3-natives-armeabi-v7a.jar
+Download https://repo1.maven.org/maven2/com/badlogicgames/gdx/gdx-bullet-platform/1.5.3/gdx-bullet-platform-1.5.3-natives-x86.jar
+Download https://repo1.maven.org/maven2/com/badlogicgames/gdx/gdx-freetype-platform/1.5.3/gdx-freetype-platform-1.5.3-natives-armeabi.jar
+Download https://repo1.maven.org/maven2/com/badlogicgames/gdx/gdx-freetype-platform/1.5.3/gdx-freetype-platform-1.5.3-natives-armeabi-v7a.jar
+Download https://repo1.maven.org/maven2/com/badlogicgames/gdx/gdx-freetype-platform/1.5.3/gdx-freetype-platform-1.5.3-natives-x86.jar
+Download https://repo1.maven.org/maven2/com/badlogicgames/gdx/gdx-bullet/1.5.3/gdx-bullet-1.5.3.jar
+Download https://repo1.maven.org/maven2/com/badlogicgames/gdx/gdx/1.5.3/gdx-1.5.3.jar
+Download https://repo1.maven.org/maven2/com/badlogicgames/gdx/gdx-backend-android/1.5.3/gdx-backend-android-1.5.3.pom
+Download https://repo1.maven.org/maven2/com/badlogicgames/gdx/gdx-box2d/1.5.3/gdx-box2d-1.5.3.pom
+Download https://repo1.maven.org/maven2/com/badlogicgames/gdx/gdx-box2d-parent/1.5.3/gdx-box2d-parent-1.5.3.pom
+Download https://repo1.maven.org/maven2/com/badlogicgames/box2dlights/box2dlights/1.3/box2dlights-1.3.pom
+Download https://repo1.maven.org/maven2/com/badlogicgames/ashley/ashley/1.3.1/ashley-1.3.1.pom
+Download https://repo1.maven.org/maven2/com/badlogicgames/gdx/gdx-freetype/1.5.3/gdx-freetype-1.5.3.pom
+Download https://repo1.maven.org/maven2/com/badlogicgames/gdx/gdx-ai/1.4.0/gdx-ai-1.4.0.pom
+Download https://repo1.maven.org/maven2/com/badlogicgames/gdx/gdx-controllers/1.5.3/gdx-controllers-1.5.3.pom
+Download https://repo1.maven.org/maven2/com/badlogicgames/gdx/gdx-controllers-parent/1.5.3/gdx-controllers-parent-1.5.3.pom
+Download https://repo1.maven.org/maven2/com/badlogicgames/gdx/gdx-controllers-android/1.5.3/gdx-controllers-android-1.5.3.pom
+Download https://repo1.maven.org/maven2/com/badlogicgames/gdx/gdx-box2d/1.5.3/gdx-box2d-1.5.3.jar
+Download https://repo1.maven.org/maven2/com/badlogicgames/box2dlights/box2dlights/1.3/box2dlights-1.3.jar
+Download https://repo1.maven.org/maven2/com/badlogicgames/ashley/ashley/1.3.1/ashley-1.3.1.jar
+Download https://repo1.maven.org/maven2/com/badlogicgames/gdx/gdx-freetype/1.5.3/gdx-freetype-1.5.3.jar
+Download https://repo1.maven.org/maven2/com/badlogicgames/gdx/gdx-ai/1.4.0/gdx-ai-1.4.0.jar
+Download https://repo1.maven.org/maven2/com/badlogicgames/gdx/gdx-controllers/1.5.3/gdx-controllers-1.5.3.jar
+Download https://repo1.maven.org/maven2/com/badlogicgames/gdx/gdx-backend-android/1.5.3/gdx-backend-android-1.5.3.jar
+Download https://repo1.maven.org/maven2/com/badlogicgames/gdx/gdx-controllers-android/1.5.3/gdx-controllers-android-1.5.3.jar
+:android:clean UP-TO-DATE
+:core:clean UP-TO-DATE
+:desktop:clean UP-TO-DATE
+:ios:clean UP-TO-DATE
+:eclipseProject
+:eclipse
+:android:eclipseClasspath
+Download https://repo1.maven.org/maven2/com/badlogicgames/gdx/gdx-backend-android/1.5.3/gdx-backend-android-1.5.3-sources.jar
+Download https://repo1.maven.org/maven2/com/badlogicgames/gdx/gdx-box2d/1.5.3/gdx-box2d-1.5.3-sources.jar
+Download https://repo1.maven.org/maven2/com/badlogicgames/box2dlights/box2dlights/1.3/box2dlights-1.3-sources.jar
+Download https://repo1.maven.org/maven2/com/badlogicgames/gdx/gdx-bullet/1.5.3/gdx-bullet-1.5.3-sources.jar
+Download https://repo1.maven.org/maven2/com/badlogicgames/ashley/ashley/1.3.1/ashley-1.3.1-sources.jar
+Download https://repo1.maven.org/maven2/com/badlogicgames/gdx/gdx-freetype/1.5.3/gdx-freetype-1.5.3-sources.jar
+Download https://repo1.maven.org/maven2/com/badlogicgames/gdx/gdx-ai/1.4.0/gdx-ai-1.4.0-sources.jar
+Download https://repo1.maven.org/maven2/com/badlogicgames/gdx/gdx-controllers/1.5.3/gdx-controllers-1.5.3-sources.jar
+Download https://repo1.maven.org/maven2/com/badlogicgames/gdx/gdx-controllers-android/1.5.3/gdx-controllers-android-1.5.3-sources.jar
+Download https://repo1.maven.org/maven2/com/badlogicgames/gdx/gdx/1.5.3/gdx-1.5.3-sources.jar
+:android:eclipseJdt
+:android:eclipseProject
+:android:eclipse
+:core:eclipseClasspath
+:core:eclipseJdt
+:core:eclipseProject
+:core:eclipse
+:desktop:eclipseClasspath
+Download https://repo1.maven.org/maven2/com/badlogicgames/gdx/gdx-backend-lwjgl/1.5.3/gdx-backend-lwjgl-1.5.3.pom
+Download https://repo1.maven.org/maven2/com/badlogicgames/gdx/gdx-tools/1.5.3/gdx-tools-1.5.3.pom
+Download https://repo1.maven.org/maven2/com/badlogicgames/gdx/gdx-controllers-desktop/1.5.3/gdx-controllers-desktop-1.5.3.pom
+Download https://repo1.maven.org/maven2/com/badlogicgames/gdx/gdx-controllers-platform/1.5.3/gdx-controllers-platform-1.5.3.pom
+Download https://repo1.maven.org/maven2/org/lwjgl/lwjgl/lwjgl/2.9.2/lwjgl-2.9.2.pom
+Download https://repo1.maven.org/maven2/org/lwjgl/lwjgl/parent/2.9.2/parent-2.9.2.pom
+Download https://repo1.maven.org/maven2/org/lwjgl/lwjgl/lwjgl_util/2.9.2/lwjgl_util-2.9.2.pom
+Download https://repo1.maven.org/maven2/com/badlogicgames/jlayer/jlayer/1.0.1-gdx/jlayer-1.0.1-gdx.pom
+Download https://repo1.maven.org/maven2/org/jcraft/jorbis/0.0.17/jorbis-0.0.17.pom
+Download https://repo1.maven.org/maven2/org/lwjgl/lwjgl/lwjgl-platform/2.9.2/lwjgl-platform-2.9.2.pom
+Download https://repo1.maven.org/maven2/net/java/jinput/jinput/2.0.5/jinput-2.0.5.pom
+Download https://repo1.maven.org/maven2/net/java/jutils/jutils/1.0.0/jutils-1.0.0.pom
+Download https://repo1.maven.org/maven2/net/java/jinput/jinput-platform/2.0.5/jinput-platform-2.0.5.pom
+Download https://repo1.maven.org/maven2/com/badlogicgames/gdx/gdx-backend-lwjgl/1.5.3/gdx-backend-lwjgl-1.5.3.jar
+Download https://repo1.maven.org/maven2/com/badlogicgames/gdx/gdx-platform/1.5.3/gdx-platform-1.5.3-natives-desktop.jar
+Download https://repo1.maven.org/maven2/com/badlogicgames/gdx/gdx-box2d-platform/1.5.3/gdx-box2d-platform-1.5.3-natives-desktop.jar
+Download https://repo1.maven.org/maven2/com/badlogicgames/gdx/gdx-bullet-platform/1.5.3/gdx-bullet-platform-1.5.3-natives-desktop.jar
+Download https://repo1.maven.org/maven2/com/badlogicgames/gdx/gdx-freetype-platform/1.5.3/gdx-freetype-platform-1.5.3-natives-desktop.jar
+Download https://repo1.maven.org/maven2/com/badlogicgames/gdx/gdx-tools/1.5.3/gdx-tools-1.5.3.jar
+Download https://repo1.maven.org/maven2/com/badlogicgames/gdx/gdx-controllers-desktop/1.5.3/gdx-controllers-desktop-1.5.3.jar
+Download https://repo1.maven.org/maven2/com/badlogicgames/gdx/gdx-controllers-platform/1.5.3/gdx-controllers-platform-1.5.3-natives-desktop.jar
+Download https://repo1.maven.org/maven2/org/lwjgl/lwjgl/lwjgl/2.9.2/lwjgl-2.9.2.jar
+Download https://repo1.maven.org/maven2/org/lwjgl/lwjgl/lwjgl_util/2.9.2/lwjgl_util-2.9.2.jar
+Download https://repo1.maven.org/maven2/com/badlogicgames/jlayer/jlayer/1.0.1-gdx/jlayer-1.0.1-gdx.jar
+Download https://repo1.maven.org/maven2/org/jcraft/jorbis/0.0.17/jorbis-0.0.17.jar
+Download https://repo1.maven.org/maven2/org/lwjgl/lwjgl/lwjgl-platform/2.9.2/lwjgl-platform-2.9.2-natives-windows.jar
+Download https://repo1.maven.org/maven2/org/lwjgl/lwjgl/lwjgl-platform/2.9.2/lwjgl-platform-2.9.2-natives-linux.jar
+Download https://repo1.maven.org/maven2/org/lwjgl/lwjgl/lwjgl-platform/2.9.2/lwjgl-platform-2.9.2-natives-osx.jar
+Download https://repo1.maven.org/maven2/net/java/jinput/jinput/2.0.5/jinput-2.0.5.jar
+Download https://repo1.maven.org/maven2/net/java/jutils/jutils/1.0.0/jutils-1.0.0.jar
+Download https://repo1.maven.org/maven2/net/java/jinput/jinput-platform/2.0.5/jinput-platform-2.0.5-natives-linux.jar
+Download https://repo1.maven.org/maven2/net/java/jinput/jinput-platform/2.0.5/jinput-platform-2.0.5-natives-windows.jar
+Download https://repo1.maven.org/maven2/net/java/jinput/jinput-platform/2.0.5/jinput-platform-2.0.5-natives-osx.jar
+Download https://repo1.maven.org/maven2/com/badlogicgames/gdx/gdx-backend-lwjgl/1.5.3/gdx-backend-lwjgl-1.5.3-sources.jar
+Download https://repo1.maven.org/maven2/com/badlogicgames/gdx/gdx-tools/1.5.3/gdx-tools-1.5.3-sources.jar
+Download https://repo1.maven.org/maven2/com/badlogicgames/gdx/gdx-controllers-desktop/1.5.3/gdx-controllers-desktop-1.5.3-sources.jar
+Download https://repo1.maven.org/maven2/org/lwjgl/lwjgl/lwjgl/2.9.2/lwjgl-2.9.2-sources.jar
+Download https://repo1.maven.org/maven2/org/lwjgl/lwjgl/lwjgl_util/2.9.2/lwjgl_util-2.9.2-sources.jar
+Download https://repo1.maven.org/maven2/com/badlogicgames/jlayer/jlayer/1.0.1-gdx/jlayer-1.0.1-gdx-sources.jar
+Download https://repo1.maven.org/maven2/org/jcraft/jorbis/0.0.17/jorbis-0.0.17-sources.jar
+Download https://repo1.maven.org/maven2/net/java/jinput/jinput/2.0.5/jinput-2.0.5-sources.jar
+Download https://repo1.maven.org/maven2/net/java/jutils/jutils/1.0.0/jutils-1.0.0-sources.jar
+:desktop:eclipseJdt
+:desktop:eclipseProject
+:desktop:eclipse
+:ios:eclipseClasspath
+Download https://repo1.maven.org/maven2/org/robovm/robovm-rt/1.0.0-beta-03/robovm-rt-1.0.0-beta-03.pom
+Download https://repo1.maven.org/maven2/org/robovm/robovm-cocoatouch/1.0.0-beta-03/robovm-cocoatouch-1.0.0-beta-03.pom
+Download https://repo1.maven.org/maven2/com/badlogicgames/gdx/gdx-backend-robovm/1.5.3/gdx-backend-robovm-1.5.3.pom
+Download https://repo1.maven.org/maven2/org/robovm/robovm-objc/1.0.0-beta-03/robovm-objc-1.0.0-beta-03.pom
+Download https://repo1.maven.org/maven2/org/robovm/robovm-rt/1.0.0-beta-03/robovm-rt-1.0.0-beta-03.jar
+Download https://repo1.maven.org/maven2/org/robovm/robovm-cocoatouch/1.0.0-beta-03/robovm-cocoatouch-1.0.0-beta-03.jar
+Download https://repo1.maven.org/maven2/com/badlogicgames/gdx/gdx-backend-robovm/1.5.3/gdx-backend-robovm-1.5.3.jar
+Download https://repo1.maven.org/maven2/org/robovm/robovm-objc/1.0.0-beta-03/robovm-objc-1.0.0-beta-03.jar
+Download https://repo1.maven.org/maven2/org/robovm/robovm-rt/1.0.0-beta-03/robovm-rt-1.0.0-beta-03-sources.jar
+Download https://repo1.maven.org/maven2/org/robovm/robovm-cocoatouch/1.0.0-beta-03/robovm-cocoatouch-1.0.0-beta-03-sources.jar
+Download https://repo1.maven.org/maven2/com/badlogicgames/gdx/gdx-backend-robovm/1.5.3/gdx-backend-robovm-1.5.3-sources.jar
+Download https://repo1.maven.org/maven2/org/robovm/robovm-objc/1.0.0-beta-03/robovm-objc-1.0.0-beta-03-sources.jar
+:ios:eclipseJdt
+:ios:eclipseProject
+:ios:copyNatives
+Download https://repo1.maven.org/maven2/com/badlogicgames/gdx/gdx-platform/1.5.3/gdx-platform-1.5.3-natives-ios.jar
+Download https://repo1.maven.org/maven2/com/badlogicgames/gdx/gdx-box2d-platform/1.5.3/gdx-box2d-platform-1.5.3-natives-ios.jar
+Download https://repo1.maven.org/maven2/com/badlogicgames/gdx/gdx-bullet-platform/1.5.3/gdx-bullet-platform-1.5.3-natives-ios.jar
+Download https://repo1.maven.org/maven2/com/badlogicgames/gdx/gdx-freetype-platform/1.5.3/gdx-freetype-platform-1.5.3-natives-ios.jar
+:ios:updateRoboVMXML
+:ios:eclipse
+:desktop:afterEclipseImport
+
+BUILD SUCCESSFUL
+
+Total time: 1 mins 48.92 secs
+10:51:34.821 [DEBUG] [org.gradle.api.internal.tasks.compile.daemon.CompilerDaemonManager] Stopping 0 compiler daemon(s).
+10:51:34.821 [INFO] [org.gradle.api.internal.tasks.compile.daemon.CompilerDaemonManager] Stopped 0 compiler daemon(s).
+10:51:34.821 [DEBUG] [org.gradle.cache.internal.DefaultFileLockManager] Releasing lock on buildscript class cache for settings file '/Users/massy/Desktop/libgdx temp/settings.gradle' (/Users/massy/.gradle/caches/2.2/scripts/settings_e4o5ytuuzro4zu7c5oservt39/SettingsScript/buildscript).
+10:51:34.822 [DEBUG] [org.gradle.cache.internal.DefaultFileLockManager] Releasing lock on no_buildscript class cache for settings file '/Users/massy/Desktop/libgdx temp/settings.gradle' (/Users/massy/.gradle/caches/2.2/scripts/settings_e4o5ytuuzro4zu7c5oservt39/SettingsScript/no_buildscript).
+10:51:34.823 [DEBUG] [org.gradle.cache.internal.DefaultFileLockManager] Releasing lock on buildscript class cache for build file '/Users/massy/Desktop/libgdx temp/build.gradle' (/Users/massy/.gradle/caches/2.2/scripts/build_aq2imcjtxy06o8vvgwp2z1oxy/ProjectScript/buildscript).
+10:51:34.823 [DEBUG] [org.gradle.cache.internal.DefaultFileLockManager] Releasing lock on no_buildscript class cache for build file '/Users/massy/Desktop/libgdx temp/build.gradle' (/Users/massy/.gradle/caches/2.2/scripts/build_aq2imcjtxy06o8vvgwp2z1oxy/ProjectScript/no_buildscript).
+10:51:34.824 [DEBUG] [org.gradle.cache.internal.DefaultFileLockManager] Releasing lock on buildscript class cache for build file '/Users/massy/Desktop/libgdx temp/android/build.gradle' (/Users/massy/.gradle/caches/2.2/scripts/build_9kfyjujghtidtumfd78b7z6vt/ProjectScript/buildscript).
+10:51:34.824 [DEBUG] [org.gradle.cache.internal.DefaultFileLockManager] Releasing lock on no_buildscript class cache for build file '/Users/massy/Desktop/libgdx temp/android/build.gradle' (/Users/massy/.gradle/caches/2.2/scripts/build_9kfyjujghtidtumfd78b7z6vt/ProjectScript/no_buildscript).
+10:51:34.825 [DEBUG] [org.gradle.cache.internal.DefaultFileLockManager] Releasing lock on buildscript class cache for build file '/Users/massy/Desktop/libgdx temp/core/build.gradle' (/Users/massy/.gradle/caches/2.2/scripts/build_93ls3k6k3bi8be6bj9s48oib0/ProjectScript/buildscript).
+10:51:34.826 [DEBUG] [org.gradle.cache.internal.DefaultFileLockManager] Releasing lock on no_buildscript class cache for build file '/Users/massy/Desktop/libgdx temp/core/build.gradle' (/Users/massy/.gradle/caches/2.2/scripts/build_93ls3k6k3bi8be6bj9s48oib0/ProjectScript/no_buildscript).
+10:51:34.826 [DEBUG] [org.gradle.cache.internal.DefaultFileLockManager] Releasing lock on buildscript class cache for build file '/Users/massy/Desktop/libgdx temp/desktop/build.gradle' (/Users/massy/.gradle/caches/2.2/scripts/build_3x1cdvcf9r3z1yp50h0scldj0/ProjectScript/buildscript).
+10:51:34.827 [DEBUG] [org.gradle.cache.internal.DefaultFileLockManager] Releasing lock on no_buildscript class cache for build file '/Users/massy/Desktop/libgdx temp/desktop/build.gradle' (/Users/massy/.gradle/caches/2.2/scripts/build_3x1cdvcf9r3z1yp50h0scldj0/ProjectScript/no_buildscript).
+10:51:34.827 [DEBUG] [org.gradle.cache.internal.DefaultFileLockManager] Releasing lock on buildscript class cache for build file '/Users/massy/Desktop/libgdx temp/ios/build.gradle' (/Users/massy/.gradle/caches/2.2/scripts/build_9f09d9cg2iu3y2gq0vrdxgjca/ProjectScript/buildscript).
+10:51:34.828 [DEBUG] [org.gradle.cache.internal.DefaultFileLockManager] Releasing lock on no_buildscript class cache for build file '/Users/massy/Desktop/libgdx temp/ios/build.gradle' (/Users/massy/.gradle/caches/2.2/scripts/build_9f09d9cg2iu3y2gq0vrdxgjca/ProjectScript/no_buildscript).
+10:51:34.829 [DEBUG] [org.gradle.cache.internal.btree.BTreePersistentIndexedCache] Closing cache module-artifacts.bin (/Users/massy/.gradle/caches/modules-2/metadata-2.14/module-artifacts.bin)
+10:51:34.830 [DEBUG] [org.gradle.cache.internal.btree.BTreePersistentIndexedCache] Closing cache module-metadata.bin (/Users/massy/.gradle/caches/modules-2/metadata-2.14/module-metadata.bin)
+10:51:34.830 [DEBUG] [org.gradle.cache.internal.btree.BTreePersistentIndexedCache] Closing cache artifact-at-url.bin (/Users/massy/.gradle/caches/modules-2/metadata-2.14/artifact-at-url.bin)
+10:51:34.831 [DEBUG] [org.gradle.cache.internal.btree.BTreePersistentIndexedCache] Closing cache artifact-at-repository.bin (/Users/massy/.gradle/caches/modules-2/metadata-2.14/artifact-at-repository.bin)
+10:51:34.832 [DEBUG] [org.gradle.cache.internal.DefaultFileLockManager] Releasing lock on artifact cache (/Users/massy/.gradle/caches/modules-2).
+10:51:34.833 [DEBUG] [org.gradle.cache.internal.DefaultCacheAccess] Cache Plugin Resolution Cache (/Users/massy/.gradle/caches/2.2/plugin-resolution) was closed 0 times.
+10:51:34.835 [DEBUG] [org.gradle.cache.internal.btree.BTreePersistentIndexedCache] Closing cache fileSnapshots.bin (/Users/massy/Desktop/libgdx temp/.gradle/2.2/taskArtifacts/fileSnapshots.bin)
+10:51:34.836 [DEBUG] [org.gradle.cache.internal.btree.BTreePersistentIndexedCache] Closing cache fileHashes.bin (/Users/massy/Desktop/libgdx temp/.gradle/2.2/taskArtifacts/fileHashes.bin)
+10:51:34.837 [DEBUG] [org.gradle.cache.internal.btree.BTreePersistentIndexedCache] Closing cache outputFileStates.bin (/Users/massy/Desktop/libgdx temp/.gradle/2.2/taskArtifacts/outputFileStates.bin)
+10:51:34.837 [DEBUG] [org.gradle.cache.internal.btree.BTreePersistentIndexedCache] Closing cache taskArtifacts.bin (/Users/massy/Desktop/libgdx temp/.gradle/2.2/taskArtifacts/taskArtifacts.bin)
+10:51:34.838 [DEBUG] [org.gradle.cache.internal.DefaultFileLockManager] Releasing lock on task history cache (/Users/massy/Desktop/libgdx temp/.gradle/2.2/taskArtifacts).
+10:51:34.839 [DEBUG] [org.gradle.api.internal.artifacts.ivyservice.ivyresolve.memcache.InMemoryCachedRepositoryFactory] In-memory dependency metadata cache closed. Repos cached: 43, cache instances: 3, modules served from cache: 146, artifacts: 120
+10:51:34.841 [DEBUG] [org.gradle.api.internal.artifacts.ivyservice.resolveengine.store.CachedStoreFactory] Resolution result cache closed. Cache reads: 6, disk reads: 8 (avg: 0.002 secs, total: 0.023 secs)
+10:51:34.842 [DEBUG] [org.gradle.api.internal.artifacts.ivyservice.resolveengine.store.CachedStoreFactory] Resolved configuration cache closed. Cache reads: 0, disk reads: 0 (avg: 0.0 secs, total: 0.0 secs)
+10:51:34.843 [DEBUG] [org.gradle.api.internal.artifacts.ivyservice.resolveengine.store.ResolutionResultsStoreFactory] Deleted 2 resolution results binary files in 0.002 secs
+10:51:34.843 [DEBUG] [org.gradle.launcher.daemon.server.exec.ExecuteBuild] The daemon has finished executing the build.
+10:51:35.207 [DEBUG] [org.gradle.launcher.daemon.server.DaemonStateCoordinator] Command execution: finished waiting for DaemonCommandExecution[command = BuildAndStop{id=634979ad-33a1-4d88-9bfc-e2a5482c57e8.1, currentDir=/Users/massy/Desktop/libgdx temp}, connection = org.gradle.launcher.daemon.server.DefaultDaemonConnection@4479e86a]. Result org.gradle.launcher.daemon.server.DaemonStateCoordinator@4c2b24b with state StopRequested
+10:51:35.208 [DEBUG] [org.gradle.launcher.daemon.server.DaemonStateCoordinator] Command execution: completed DaemonCommandExecution[command = BuildAndStop{id=634979ad-33a1-4d88-9bfc-e2a5482c57e8.1, currentDir=/Users/massy/Desktop/libgdx temp}, connection = org.gradle.launcher.daemon.server.DefaultDaemonConnection@4479e86a]
+10:51:35.209 [DEBUG] [org.apache.http.impl.conn.PoolingClientConnectionManager] Connection manager is shutting down
+10:51:35.209 [DEBUG] [org.gradle.launcher.daemon.server.DaemonStateCoordinator] updating lastActivityAt to 1422611495209
+10:51:35.210 [DEBUG] [org.apache.http.impl.conn.DefaultClientConnection] Connection 0.0.0.0:59938<->185.31.17.209:443 closed
+10:51:35.210 [DEBUG] [org.gradle.launcher.daemon.server.DaemonStateCoordinator] Marking daemon stopped due to command completed and stop requested. The daemon is running a build: false
+10:51:35.210 [DEBUG] [org.apache.http.impl.conn.DefaultClientConnection] Connection 0.0.0.0:59938<->185.31.17.209:443 closed
+10:51:35.210 [DEBUG] [org.gradle.launcher.daemon.server.DaemonStateCoordinator] Idle timeout: daemon has stopped.
+10:51:35.211 [DEBUG] [org.gradle.launcher.daemon.server.exec.ReturnResult] Daemon is dispatching the build result: DaemonCommandResult[type=Success, value=null]
+10:51:35.211 [DEBUG] [org.apache.http.impl.conn.PoolingClientConnectionManager] Connection manager shut down
+10:51:35.211 [DEBUG] [org.gradle.launcher.daemon.server.SynchronizedDispatchConnection] thread 13: dispatching class org.gradle.launcher.daemon.protocol.Success
+10:51:35.211 [DEBUG] [org.gradle.launcher.daemon.server.Daemon] stop() called on daemon
+10:51:35.212 [DEBUG] [org.apache.http.impl.conn.PoolingClientConnectionManager] Connection manager is shutting down
+10:51:35.212 [INFO] [org.gradle.launcher.daemon.server.Daemon] Stop requested. Daemon is removing its presence from the registry...
+10:51:35.213 [DEBUG] [org.apache.http.impl.conn.DefaultClientConnection] Connection 0.0.0.0:59936<->185.31.17.209:443 closed
+10:51:35.213 [DEBUG] [org.apache.http.impl.conn.DefaultClientConnection] Connection 0.0.0.0:59936<->185.31.17.209:443 closed
+10:51:35.213 [DEBUG] [org.gradle.launcher.daemon.server.DomainRegistryUpdater] Removing our presence to clients, eg. removing this address from the registry: [9a7db627-9d72-4502-a00f-721d3ba1d139 port:59927, addresses:[/0:0:0:0:0:0:0:1, /127.0.0.1]]
+10:51:35.214 [DEBUG] [org.gradle.launcher.daemon.registry.PersistentDaemonRegistry] Removing daemon address: [9a7db627-9d72-4502-a00f-721d3ba1d139 port:59927, addresses:[/0:0:0:0:0:0:0:1, /127.0.0.1]]
+10:51:35.215 [DEBUG] [org.gradle.launcher.daemon.server.DefaultIncomingConnectionHandler] Finishing executing command: BuildAndStop{id=634979ad-33a1-4d88-9bfc-e2a5482c57e8.1, currentDir=/Users/massy/Desktop/libgdx temp}
+10:51:35.214 [DEBUG] [org.apache.http.impl.conn.PoolingClientConnectionManager] Connection manager shut down
+10:51:35.216 [DEBUG] [org.gradle.cache.internal.DefaultFileLockManager] Waiting to acquire exclusive lock on daemon addresses registry.
+10:51:35.216 [DEBUG] [org.gradle.cache.internal.DefaultFileLockManager] Lock acquired.
+10:51:35.217 [DEBUG] [org.apache.http.impl.conn.PoolingClientConnectionManager] Connection manager is shutting down
+10:51:35.218 [DEBUG] [org.apache.http.impl.conn.DefaultClientConnection] Connection 0.0.0.0:59934<->185.31.17.209:443 closed
+10:51:35.219 [DEBUG] [org.apache.http.impl.conn.DefaultClientConnection] Connection 0.0.0.0:59934<->185.31.17.209:443 closed
+10:51:35.219 [DEBUG] [org.apache.http.impl.conn.PoolingClientConnectionManager] Connection manager shut down
+10:51:35.222 [DEBUG] [org.apache.http.impl.conn.PoolingClientConnectionManager] Connection manager is shutting down
+10:51:35.223 [DEBUG] [org.apache.http.impl.conn.DefaultClientConnection] Connection 0.0.0.0:59932<->185.31.17.209:443 closed
+10:51:35.223 [DEBUG] [org.apache.http.impl.conn.DefaultClientConnection] Connection 0.0.0.0:59932<->185.31.17.209:443 closed
+10:51:35.223 [DEBUG] [org.apache.http.impl.conn.PoolingClientConnectionManager] Connection manager shut down
+10:51:35.224 [DEBUG] [org.apache.http.impl.conn.PoolingClientConnectionManager] Connection manager is shutting down
+10:51:35.224 [DEBUG] [org.apache.http.impl.conn.DefaultClientConnection] Connection 0.0.0.0:59931<->185.31.17.209:443 closed
+10:51:35.225 [DEBUG] [org.apache.http.impl.conn.DefaultClientConnection] Connection 0.0.0.0:59931<->185.31.17.209:443 closed
+10:51:35.225 [DEBUG] [org.gradle.cache.internal.DefaultFileLockManager] Releasing lock on daemon addresses registry.
+10:51:35.225 [DEBUG] [org.apache.http.impl.conn.PoolingClientConnectionManager] Connection manager shut down
+10:51:35.227 [DEBUG] [org.apache.http.impl.conn.PoolingClientConnectionManager] Connection manager is shutting down
+10:51:35.228 [DEBUG] [org.apache.http.impl.conn.DefaultClientConnection] Connection 0.0.0.0:59930<->185.31.17.209:443 closed
+10:51:35.227 [DEBUG] [org.gradle.launcher.daemon.server.SynchronizedDispatchConnection] thread 14: received class org.gradle.launcher.daemon.protocol.CloseInput
+10:51:35.227 [DEBUG] [org.gradle.launcher.daemon.server.DomainRegistryUpdater] Address removed from registry.
+10:51:35.228 [DEBUG] [org.gradle.launcher.daemon.server.DefaultDaemonConnection] Received IO message from client: CloseInput[id=634979ad-33a1-4d88-9bfc-e2a5482c57e8.2]
+10:51:35.228 [DEBUG] [org.apache.http.impl.conn.DefaultClientConnection] Connection 0.0.0.0:59930<->185.31.17.209:443 closed
+10:51:35.229 [DEBUG] [org.apache.http.impl.conn.PoolingClientConnectionManager] Connection manager shut down
+10:51:35.230 [DEBUG] [org.gradle.launcher.daemon.server.SynchronizedDispatchConnection] thread 14: received class org.gradle.launcher.daemon.protocol.Finished
+10:51:35.231 [DEBUG] [org.gradle.launcher.daemon.server.DefaultDaemonConnection] Received non-IO message from client: org.gradle.launcher.daemon.protocol.Finished@13c27f6c
+10:51:35.231 [DEBUG] [org.gradle.launcher.daemon.server.DefaultIncomingConnectionHandler] Received finished message: org.gradle.launcher.daemon.protocol.Finished@13c27f6c
+10:51:35.231 [DEBUG] [org.gradle.launcher.daemon.server.SynchronizedDispatchConnection] thread 13: stopping connection
+10:51:35.233 [DEBUG] [org.gradle.launcher.daemon.server.SynchronizedDispatchConnection] thread 14: received null
+10:51:35.233 [DEBUG] [org.gradle.launcher.daemon.server.DefaultDaemonConnection] Received end-of-input from client.
+10:51:35.234 [DEBUG] [org.gradle.launcher.daemon.server.SynchronizedDispatchConnection] thread 13: stopping connection
+Daemon vm is shutting down... The daemon has exited normally or was terminated in response to a user interrupt.
+10:51:35.235 [DEBUG] [org.gradle.launcher.daemon.registry.PersistentDaemonRegistry] Removing daemon address: [9a7db627-9d72-4502-a00f-721d3ba1d139 port:59927, addresses:[/0:0:0:0:0:0:0:1, /127.0.0.1]]
+10:51:35.236 [DEBUG] [org.gradle.cache.internal.DefaultFileLockManager] Waiting to acquire exclusive lock on daemon addresses registry.
+10:51:35.237 [DEBUG] [org.gradle.cache.internal.DefaultFileLockManager] Lock acquired.
+10:51:35.237 [DEBUG] [org.gradle.cache.internal.DefaultFileLockManager] Releasing lock on daemon addresses registry.
