@@ -2,6 +2,7 @@ package com.martinfredriksson.merbull;
 
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
@@ -15,7 +16,7 @@ import com.badlogic.gdx.utils.viewport.Viewport;
 import com.martinfredriksson.merbull.level.CollisionDetector;
 
 
-public class GameScreen implements Screen{
+public class GameScreen implements Screen, InputProcessor{
 	
 	World world;
 	SpriteBatch batch;
@@ -41,7 +42,9 @@ public class GameScreen implements Screen{
 		this.game = game;
 		this.level = level;
 		gameUi = new GameUi();
-		Gdx.input.setInputProcessor(gameUi);
+		
+		
+		Gdx.input.setInputProcessor(this);
 		
 		this.colDet = new CollisionDetector(level);
 		
@@ -63,6 +66,9 @@ public class GameScreen implements Screen{
 	public void render (float delta) {
 		//levelTime is time since level started
 		long levelTime = System.currentTimeMillis() - startTime;
+		
+		//System.out.println(Gdx.input.get);
+		
 		
 		if(level.gameOver()){
 			game.setScreen(new MenuScreen(game)); //GameScreen needs level so it knows what level it should run
@@ -153,6 +159,62 @@ public class GameScreen implements Screen{
 		level.manager.dispose();
 		//gameUi.dispose();
 		
+	}
+
+
+	@Override
+	public boolean keyDown(int keycode) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+
+	@Override
+	public boolean keyUp(int keycode) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+
+	@Override
+	public boolean keyTyped(char character) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+
+	@Override
+	public boolean touchDown(int screenX, int screenY, int pointer, int button) {
+		System.out.println("x: " + screenX + " y: " + screenY);
+		return false;
+	}
+
+
+	@Override
+	public boolean touchUp(int screenX, int screenY, int pointer, int button) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+
+	@Override
+	public boolean touchDragged(int screenX, int screenY, int pointer) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+
+	@Override
+	public boolean mouseMoved(int screenX, int screenY) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+
+	@Override
+	public boolean scrolled(int amount) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 	
 	
