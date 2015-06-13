@@ -8,7 +8,7 @@ import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.badlogic.gdx.physics.box2d.BodyDef.BodyType;
 import com.badlogic.gdx.physics.box2d.World;
 
-public class Wall {
+public class Field {
 	
 	private BodyDef bodyDef;
 	private Body wallBody;
@@ -16,10 +16,9 @@ public class Wall {
 	private Vector2 size;
 	private Vector2 drawPos;
 	
-    final short CAT_WALLS = 0x0002;
-    //final short MASK_WALLS = ~CAT_WALLS;
+    final short CAT_FRICFIELD = 0x0005;
 	
-	public Wall(World world, Vector2 size, Vector2 pos){
+	public Field(World world, Vector2 size, Vector2 pos, float fricacc, boolean acc){
 		this.size = size;
 		drawPos = new Vector2(pos.x-((size.x*2)/2), pos.y-(size.y*2)/2);
 		
@@ -27,7 +26,12 @@ public class Wall {
 		bodyDef.type = BodyType.StaticBody; 
 		bodyDef.position.set(pos);
 		wallBody = world.createBody(bodyDef);
-		wallBody.setUserData("bouncer");
+		
+		if(acc){
+			wallBody.setUserData("accfield");
+		}else{
+			wallBody.setUserData("fricfield");
+		}
 		
 		PolygonShape boxShape = new PolygonShape();
 		boxShape.setAsBox(size.x, size.y);
@@ -35,8 +39,12 @@ public class Wall {
 		FixtureDef boxFixtureDef = new FixtureDef();
 		boxFixtureDef.shape = boxShape;
 		boxFixtureDef.density = 1;
+		//boxFixtureDef.friction = friccacc;
+		boxFixtureDef.isSensor = true;
 		//Setup collision filters and rules
-		boxFixtureDef.filter.categoryBits = CAT_WALLS;
+		boxFixtureDef.filter.categoryBits = CAT_FRICFIELD;
+		//boxFixtureDef.filter.maskBits = MASK_WALLS;
+		//boxFixtureDef.filter.groupIndex = -1;
 		wallBody.createFixture(boxFixtureDef);
 	}
 	

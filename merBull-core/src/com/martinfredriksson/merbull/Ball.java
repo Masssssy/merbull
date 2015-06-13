@@ -17,11 +17,14 @@ public class Ball{
 	private Texture player;
 	private Vector2 pos;
 	private float size;
+	private boolean shield = true;
 	
     //final short CAT_PLAYER = 0x0001;
 	//private short MASK_PLAYER  = 0x0002;
 	
-	Body playerBody;
+	Body ballBody;
+	CircleShape circleShape;
+	
 	
 	
 	public Ball(World world, Vector2 pos, float size){
@@ -32,25 +35,25 @@ public class Ball{
 		bodyDef.type = BodyType.DynamicBody; 
 		bodyDef.fixedRotation = true;
 		bodyDef.position.set(pos.x,pos.y);
-		playerBody = world.createBody(bodyDef);
-		playerBody.setUserData("player");
+		ballBody = world.createBody(bodyDef);
+		ballBody.setUserData("playerBall");
 		
-		CircleShape circleShape = new CircleShape();
+		circleShape = new CircleShape();
 		circleShape.setRadius(size);
 		
-		this.setVelocity(new Vector2(6f,4f));
+		this.setVelocity(new Vector2(40f,0f));
 		
 		FixtureDef boxFixtureDef = new FixtureDef();
 		boxFixtureDef.shape = circleShape;
 	
 		boxFixtureDef.density = 1;
-		boxFixtureDef.restitution = 0.5f;
+		boxFixtureDef.restitution = 0.95f;
 		
 		//Setup collision filters and rules
 		//boxFixtureDef.filter.categoryBits = CAT_PLAYER;
 		//boxFixtureDef.filter.maskBits = MASK_PLAYER;
 		//boxFixtureDef.filter.groupIndex = -1;
-		playerBody.createFixture(boxFixtureDef);
+		ballBody.createFixture(boxFixtureDef);
 	}
 	
 	//Constructor that uses default player size of 1
@@ -64,11 +67,11 @@ public class Ball{
 	
 
 	public void setVelocity(Vector2 velocity){
-		this.playerBody.setLinearVelocity(velocity);
+		this.ballBody.setLinearVelocity(velocity);
 	}
 	
 	public Vector2 getPosition(){
-		return playerBody.getPosition();
+		return ballBody.getPosition();
 	}
 	
 	public float getSize(){
@@ -80,7 +83,20 @@ public class Ball{
 	}
 	
 	public Body getBody(){
-		return playerBody;
+		return ballBody;
+	}
+	
+	public CircleShape getSmallShape(){
+		circleShape.setRadius(0.5f);
+		return circleShape;
+	}
+
+	public void setShield(boolean b) {
+		this.shield = b;
+	}
+	
+	public boolean hasShield(){
+		return shield;
 	}
 
 

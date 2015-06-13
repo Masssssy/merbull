@@ -12,6 +12,7 @@ import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
+import com.martinfredriksson.merbull.level.CollisionDetector;
 
 
 public class GameScreen implements Screen{
@@ -22,7 +23,7 @@ public class GameScreen implements Screen{
 	Level level;
 	GameUi gameUi;
 	
-	//CollisionDetector colDet;
+	CollisionDetector colDet;
 	
     float w = Gdx.graphics.getWidth();
     static float h = Gdx.graphics.getHeight();
@@ -42,10 +43,10 @@ public class GameScreen implements Screen{
 		gameUi = new GameUi();
 		Gdx.input.setInputProcessor(gameUi);
 		
-		//this.colDet = new CollisionDetector(level);
+		this.colDet = new CollisionDetector(level);
 		
 		world = new World(new Vector2(0,0), false);
-		//world.setContactListener(colDet);
+		world.setContactListener(colDet);
 		batch = new SpriteBatch();
 	
 	    cam = new OrthographicCamera(20, 20*(16f/9f));
@@ -62,6 +63,12 @@ public class GameScreen implements Screen{
 	public void render (float delta) {
 		//levelTime is time since level started
 		long levelTime = System.currentTimeMillis() - startTime;
+		
+		if(level.gameOver()){
+			game.setScreen(new MenuScreen(game)); //GameScreen needs level so it knows what level it should run
+            dispose();
+		}
+		
 		updateGame(level, delta);
 		updateCamera();
 		
