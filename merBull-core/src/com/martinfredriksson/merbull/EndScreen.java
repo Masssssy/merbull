@@ -55,6 +55,9 @@ public class EndScreen implements Screen {
 			victory.play(1.0f);
 			buttonText = "Next level";
 		}
+		else {
+			buttonText = "Return to menu";
+		}
 		
 		stage = new Stage();
 		Gdx.input.setInputProcessor(stage);
@@ -66,9 +69,7 @@ public class EndScreen implements Screen {
 	   
 	    skin = new Skin(Gdx.files.internal("uiskin/uiskin.json"));
 
-	    
-	    
-		
+
         camera = new OrthographicCamera();
         camera.setToOrtho(false, 720, 1280);
         
@@ -82,7 +83,7 @@ public class EndScreen implements Screen {
 	@Override
 	public void render(float delta) {
 		time = time + delta;
-        Gdx.gl.glClearColor(1, 102/255f, 102/255f, 1);
+		Gdx.gl.glClearColor(101/255f, 182/255f, 241/255f, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
         camera.update();
@@ -93,15 +94,16 @@ public class EndScreen implements Screen {
         game.batch.begin();
         if(win == 1){
             game.font.draw(game.batch, "Level cleared! =)", 100, 1200);
-            game.font.draw(game.batch, "Highscores", 100, 1000);
+            game.font.draw(game.batch, "Highscores", 100, 1100);
         }else if(win == 2){
-        	game.font.draw(game.batch, "Highscores", 100, 1000);
+        	game.font.draw(game.batch, "Highscores", 100, 1100);
             game.font.draw(game.batch, "You failed =(", 100, 1200);
         }
+        else
+        	game.font.draw(game.batch, "Highscores", 100, 1100);
 
         game.batch.end();
         
-        System.out.println(time);
         if(doOnce && time > 0.3){
             printScore();
             doOnce = false;
@@ -150,16 +152,38 @@ public class EndScreen implements Screen {
 		db.closeConn();
 		
 	    table.setFillParent(true);
+	    table.setPosition(0, -15);
 	    stage.addActor(table);
 	    
 		TextButton button1 = new TextButton(buttonText, skin);
 	    button1.addListener(new InputListener() {
 			public boolean touchDown (InputEvent event, float x, float y, int pointer, int button) {
-				System.out.println("button 1 pressed");
+				if(win == 1){
+					game.setScreen(new LoadScreen(game, new Level(name)));
+					game.music.play();
+				}
+				else if(win == 2){
+					game.setScreen(new LoadScreen(game, new Level(name)));
+					game.music.play();
+				}
+				else{
+					game.setScreen(new MenuScreen(game));
+					game.music.play();
+				}
 				return false;
 			}
 		});
-	    table.add(button1);
+	    table.row();
+	    if(win != 0) {
+	    	table.add("Your score:").padTop(20f);
+		    table.row();
+		    table.add(name);
+		    table.add(Integer.toString(Level.getMaxBounces()-bounces));
+		    table.add(Float.toString((float)Math.round(time * 100) / 100));
+		    table.add(Float.toString((bounces*100)/((float)Math.round(time * 100) / 100)));
+		    table.row();
+	    }
+	    table.add(button1).width(200).height(50).padTop(20f).colspan(5);
 	}
 	
 	@Override

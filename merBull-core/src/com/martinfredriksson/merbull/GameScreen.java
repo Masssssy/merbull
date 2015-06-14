@@ -33,6 +33,8 @@ public class GameScreen implements Screen, InputProcessor{
 	MyGame game;
 	Level level;
 	
+	float slowCheck = 0;
+	
 	
 	CollisionDetector colDet;
 	
@@ -90,6 +92,17 @@ public class GameScreen implements Screen, InputProcessor{
 			dispose();
 		}
 		
+		if(level.getBall().getBody().getLinearVelocity().len() < 1f && level.getBall().state == 3){
+			slowCheck += delta;
+			System.out.println("slwocheck" + slowCheck);
+			if(slowCheck > 2){
+				level.die();
+			}
+		}else{
+			slowCheck = 0;
+		}
+			
+		
 		
 		updateGame(level, delta);
 		updateCamera();
@@ -101,7 +114,7 @@ public class GameScreen implements Screen, InputProcessor{
 			game.batch.begin();
 			 	level.draw(game.batch);
 			game.batch.end();
-		debugRenderer.render(world, cam.combined);
+		//debugRenderer.render(world, cam.combined);
 		
 	    //Draw line if ball state is 1
 	    if(level.getBall().state == 1){

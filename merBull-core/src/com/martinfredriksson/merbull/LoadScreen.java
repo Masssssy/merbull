@@ -26,28 +26,22 @@ public class LoadScreen implements Screen {
 		//Add things necessary on this level to the loading queue
 		
 		//Player should always load
-		manager.load("ball_shield.png", Texture.class);
+		manager.load("ball_shield_hi.png", Texture.class);
+		manager.load("ball_shield_mi.png", Texture.class);
+		manager.load("ball_shield_lo.png", Texture.class);
 		
 		manager.load("ball.png", Texture.class);
 		
 		manager.load("goal.png", Texture.class);
 		
 		manager.load("boost.png", Texture.class);
+		manager.load("slow.png", Texture.class);
 		
 		//for now all textures will also always load
 		manager.load("wall.png", Texture.class);
 		manager.load("wall_black.png", Texture.class);
 		
 		manager.load("trap.png", Texture.class);
-		
-		/*
-		if(!level.bombs.isEmpty()){
-			//if bombs are in the array, load the textures for bombs
-		}
-		
-		if(!level.walls.isEmpty()){
-			//if walls are in the array, load the textures for walls
-		}*/
 	}
 
 	@Override

@@ -16,10 +16,13 @@ public class Field {
 	private Vector2 size;
 	private Vector2 drawPos;
 	
+	private boolean fricAcc;
+	
     final short CAT_FRICFIELD = 0x0005;
 	
 	public Field(World world, Vector2 size, Vector2 pos, float fricacc, boolean acc){
 		this.size = size;
+		this.fricAcc = acc;
 		drawPos = new Vector2(pos.x-((size.x*2)/2), pos.y-(size.y*2)/2);
 		
 		bodyDef = new BodyDef();
@@ -50,6 +53,10 @@ public class Field {
 	
 	public Vector2 getSize(){
 		return size;
+	}
+	
+	public boolean getFricAcc(){
+		return fricAcc;
 	}
 	
 	public Vector2 getDrawPos(){

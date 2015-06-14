@@ -53,7 +53,7 @@ public class MenuScreen implements Screen {
 	    
 	    highscore.addListener(new InputListener() {
 	    	public boolean touchDown (InputEvent event, float c, float y, int pointer, int button) {
-	    		game.setScreen(new EndScreen(game, 1, player, 0, 0));
+	    		game.setScreen(new EndScreen(game, 0, player, 0, 0));
 	    		dispose();
 	    		return false;
 	    	}

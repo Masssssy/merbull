@@ -38,7 +38,7 @@ public class SplashScreen implements Screen {
         
         
         game.batch.begin();
-            game.batch.draw(splash, 104, 300, 512,512);
+            game.batch.draw(splash, 0, 0, 720,1280);
         game.batch.end();
         
         if (Gdx.input.isTouched()) {

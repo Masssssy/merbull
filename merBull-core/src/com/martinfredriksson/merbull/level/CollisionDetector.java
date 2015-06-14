@@ -28,6 +28,7 @@ public class CollisionDetector implements ContactListener {
 		if(fixA.getBody().getUserData() == "playerBall" && fixB.getBody().getUserData() == "accfield" || 
 				   fixA.getBody().getUserData() == "accfield" && fixB.getBody().getUserData() == "playerBall"){
 					//Player and fricfield collided
+					level.playSwoosh();
 					System.out.println("accfield/fricfield and player collided");
 					level.getBall().getBody().setLinearDamping(-5f);
 		}
@@ -35,8 +36,9 @@ public class CollisionDetector implements ContactListener {
 		if(fixA.getBody().getUserData() == "playerBall" && fixB.getBody().getUserData() == "fricfield" || 
 				   fixA.getBody().getUserData() == "fricfield" && fixB.getBody().getUserData() == "playerBall"){
 					//Player and fricfield collided
+					level.playScratch();
 					System.out.println("accfield/fricfield and player collided");
-					level.getBall().getBody().setLinearDamping(5f);
+					level.getBall().getBody().setLinearDamping(10f);
 		}
 		
 		if(fixA.getBody().getUserData() == "playerBall" && fixB.getBody().getUserData() == "trap" || 
@@ -51,6 +53,7 @@ public class CollisionDetector implements ContactListener {
 				   fixA.getBody().getUserData() == "bouncer" && fixB.getBody().getUserData() == "playerBall"){
 					//Player and fricfield collided
 					System.out.println("reduce bounce count");
+					level.playDonk();
 					level.reduceBounce();
 		}
 		

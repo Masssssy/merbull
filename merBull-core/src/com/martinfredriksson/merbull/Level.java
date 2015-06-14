@@ -7,6 +7,7 @@ import java.util.List;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.assets.AssetManager;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.Texture.TextureWrap;
 import com.badlogic.gdx.graphics.g2d.ParticleEffect;
@@ -35,13 +36,16 @@ public class Level {
 	List<Goal> goals = new ArrayList<Goal>();
 	
 	Texture ballTexture;
-	Texture ballShieldTexture;
+	Texture ballShieldHiTexture;
+	Texture ballShieldMiTexture;
+	Texture ballShieldLoTexture;
 	Texture wallTexture;
 	Texture wallBlackTexture;
 	Texture wallGreenTexture;
 	Texture goalTexture;
 	Texture trapTexture;
 	Texture boostTexture;
+	Texture slowTexture;
 
 	AssetManager manager;
 	private boolean gameOver = false;
@@ -50,6 +54,10 @@ public class Level {
 	private boolean shield = true;
 	private boolean win = false;
 	private Vector2 angle;
+	
+	Sound donk;
+	Sound swoosh;
+	Sound scratch;
 	
 	private String player;
 	
@@ -78,13 +86,20 @@ public class Level {
 
 	//Actually initialize the level 
 	public void init(World world) {
+		
+		donk = Gdx.audio.newSound(Gdx.files.internal("donk.ogg"));
+		swoosh = Gdx.audio.newSound(Gdx.files.internal("swoosh.ogg"));
+		scratch = Gdx.audio.newSound(Gdx.files.internal("scratch.ogg"));
+
 			
 		//Setup level settings
 		allowedBounces = max_bounces;
 		
 		//Initiate the level world
 		balls.add(new Ball(world, new Vector2(0,0)));
-		ballShieldTexture = manager.get("ball_shield.png", Texture.class);
+		ballShieldHiTexture = manager.get("ball_shield_hi.png", Texture.class);
+		ballShieldMiTexture = manager.get("ball_shield_mi.png", Texture.class);
+		ballShieldLoTexture = manager.get("ball_shield_lo.png", Texture.class);
 		ballTexture = manager.get("ball.png", Texture.class);
 		
 		//Add some walls
@@ -100,7 +115,9 @@ public class Level {
 		//wallGreenTexture = manager.get("wall_green.png", Texture.class);
 		
 		fields.add(new Field(world,new Vector2(2f,1f), new Vector2(0f,10f), 0.5f, true));
+		fields.add(new Field(world,new Vector2(2f,5f), new Vector2(0f,17f), -1000f, false));
 		boostTexture = manager.get("boost.png", Texture.class);
+		slowTexture = manager.get("slow.png", Texture.class);
 		
 		goalTexture = manager.get("goal.png", Texture.class);
 		goals.add(new Goal(world,new Vector2(8f,2f), new Vector2(0f,33f)));
@@ -126,27 +143,23 @@ public class Level {
 
 	public void draw(SpriteBatch batch){ 
 	   // Draw level
-		
-	    //Draw balls, with or without shield depending on state
-	    Iterator<Ball> a = balls.iterator();
-	    while (a.hasNext()){
-	    	Ball ball = a.next();
-	    	if(ball.hasShield()){
-	    		//Render ball with shield
-	    		batch.draw(ballShieldTexture,ball.getPosition().x-(ball.getSize()),ball.getPosition().y-(ball.getSize()),ball.getSize()*2,ball.getSize()*2);
-	    	}else{
-	    		//Else render ball without shield
-		    	batch.draw(ballTexture,ball.getPosition().x-(ball.getSize()/2),ball.getPosition().y-(ball.getSize()/2),ball.getSize(),ball.getSize());
-	    	}
-	    }
 	    
 	    //Draw fields
 	    TextureRegion boostReg = new TextureRegion(boostTexture);
 		boostTexture.setWrap(TextureWrap.Repeat, TextureWrap.Repeat);
+		
+		TextureRegion slowReg = new TextureRegion(boostTexture);
+		slowTexture.setWrap(TextureWrap.Repeat, TextureWrap.Repeat);
+		
 	    Iterator<Field> e = fields.iterator();
 	    while (e.hasNext()){
 	    	Field field = e.next();
-	    	batch.draw(boostTexture, field.getDrawPos().x, field.getDrawPos().y, field.getSize().x*2f, field.getSize().y*2f, 0, 0, field.getSize().x, field.getSize().y);	    
+	    	if(field.getFricAcc()){
+	    		//acc field
+		    	batch.draw(boostTexture, field.getDrawPos().x, field.getDrawPos().y, field.getSize().x*2f, field.getSize().y*2f, 0, 0, field.getSize().x, field.getSize().y);
+	    	}else{
+		    	batch.draw(slowTexture, field.getDrawPos().x, field.getDrawPos().y, field.getSize().x*2f, field.getSize().y*2f, 0, 0, field.getSize().x, field.getSize().y);
+	    	}
 	    }
 	    
 	    
@@ -180,6 +193,27 @@ public class Level {
 	    	batch.draw(goalTexture, goal.getDrawPos().x, goal.getDrawPos().y, goal.getSize().x*2f, goal.getSize().y*2f, 0, 0, goal.getSize().x, goal.getSize().y);	    
 	    }
 	    
+	    
+		
+	    //Draw balls, with or without shield depending on state
+	    Iterator<Ball> a = balls.iterator();
+	    while (a.hasNext()){
+	    	Ball ball = a.next();
+	    	if(ball.hasShield() && this.getBounces() >= 5){
+	    		//Render ball with green
+	    		batch.draw(ballShieldHiTexture,ball.getPosition().x-(ball.getSize()),ball.getPosition().y-(ball.getSize()),ball.getSize()*2,ball.getSize()*2);
+	    	}else if(ball.hasShield() && this.getBounces() >= 3){
+	    		//yellow ball
+	    		batch.draw(ballShieldMiTexture,ball.getPosition().x-(ball.getSize()),ball.getPosition().y-(ball.getSize()),ball.getSize()*2,ball.getSize()*2);
+	    	}else if(ball.hasShield() && this.getBounces() >= 1){
+	    		//red ball
+	    		batch.draw(ballShieldLoTexture,ball.getPosition().x-(ball.getSize()),ball.getPosition().y-(ball.getSize()),ball.getSize()*2,ball.getSize()*2);
+	    	}else{
+	    		//Else render ball without shield
+		    	batch.draw(ballTexture,ball.getPosition().x-(ball.getSize()/2),ball.getPosition().y-(ball.getSize()/2),ball.getSize(),ball.getSize());
+	    	}
+	    }
+	    
 	    for (int i = effects.size - 1; i >= 0; i--) {
 	        PooledEffect effect = effects.get(i);
 	        effect.draw(batch, 0.16f);
@@ -191,6 +225,18 @@ public class Level {
 	    
 	    
 	}
+	
+    public void playDonk(){
+		donk.play(1.0f);	
+    }
+    
+    public void playSwoosh(){
+		swoosh.play(1.0f);	
+    }
+    
+    public void playScratch(){
+		scratch.play(1.0f);	
+    }
 
 	public void setAssetManager(AssetManager manager) {
 		this.manager = manager;
