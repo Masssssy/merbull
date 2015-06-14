@@ -5,8 +5,13 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.Texture.TextureWrap;
+import com.badlogic.gdx.graphics.g2d.ParticleEffect;
+import com.badlogic.gdx.graphics.g2d.ParticleEffectPool;
+import com.badlogic.gdx.graphics.g2d.ParticleEffectPool.PooledEffect;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
@@ -14,6 +19,7 @@ import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.World;
+import com.badlogic.gdx.utils.Array;
 import com.martinfredriksson.merbull.level.Field;
 import com.martinfredriksson.merbull.level.Goal;
 import com.martinfredriksson.merbull.level.Trap;
@@ -31,26 +37,50 @@ public class Level {
 	Texture ballTexture;
 	Texture ballShieldTexture;
 	Texture wallTexture;
+	Texture wallBlackTexture;
+	Texture wallGreenTexture;
+	Texture goalTexture;
 	Texture trapTexture;
+	Texture boostTexture;
 
 	AssetManager manager;
 	private boolean gameOver = false;
 	private int allowedBounces;
+	private static int max_bounces=5;
 	private boolean shield = true;
 	private boolean win = false;
 	private Vector2 angle;
 	
-	public Level(){
+	private String player;
+	
+	ParticleEffectPool pool;
+	Array<PooledEffect> effects = new Array();
+	ParticleEffect blackHole = new ParticleEffect();
+	
+	public Level(String p){
 		//IF TIME:
 		//Create the level from text file or equivalent
 		//playerpos, wallpositions, weapon pos etc
+		player = p;
+	}
+	
+	public int getBounces() {
+		return allowedBounces;
+	}
+	
+	public String getPlayer() {
+		return player;
+	}
+	
+	public static int getMaxBounces(){
+		return max_bounces;
 	}
 
 	//Actually initialize the level 
 	public void init(World world) {
-		
+			
 		//Setup level settings
-		allowedBounces = 5;
+		allowedBounces = max_bounces;
 		
 		//Initiate the level world
 		balls.add(new Ball(world, new Vector2(0,0)));
@@ -58,19 +88,40 @@ public class Level {
 		ballTexture = manager.get("ball.png", Texture.class);
 		
 		//Add some walls
-		walls.add(new Wall(world, new Vector2(1f, 10f), new Vector2(-9f, 5f)));
-		walls.add(new Wall(world, new Vector2(1f, 10f), new Vector2(9f, 5f)));
+		walls.add(new Wall(world, new Vector2(1f, 30f), new Vector2(-9f, 5f)));
+		walls.add(new Wall(world, new Vector2(1f, 30f), new Vector2(9f, 5f)));
+		walls.add(new Wall(world, new Vector2(8f, 1f), new Vector2(0f, -4f)));
+		//Add rotating walls
 		walls.add(new Wall(world, new Vector2(3f,1f), new Vector2(-3f,10f), 2f));
 		walls.add(new Wall(world, new Vector2(3f,1f), new Vector2(4f,10f), 2f));
 		
 		wallTexture = manager.get("wall.png", Texture.class);
+		wallBlackTexture = manager.get("wall_black.png", Texture.class);
+		//wallGreenTexture = manager.get("wall_green.png", Texture.class);
 		
-		fields.add(new Field(world,new Vector2(5f,5f), new Vector2(0f,10f), 2f, true));
-		goals.add(new Goal(world,new Vector2(5f,5f), new Vector2(0f,30f)));
+		fields.add(new Field(world,new Vector2(2f,1f), new Vector2(0f,10f), 0.5f, true));
+		boostTexture = manager.get("boost.png", Texture.class);
+		
+		goalTexture = manager.get("goal.png", Texture.class);
+		goals.add(new Goal(world,new Vector2(8f,2f), new Vector2(0f,33f)));
 		
 		//Add death trap
 		traps.add(new Trap(world, new Vector2(4f,2f)));
+
+		blackHole.load(Gdx.files.internal("particle.p"), Gdx.files.internal(""));
+		pool = new ParticleEffectPool(blackHole, 1, 10);
+		PooledEffect effect = pool.obtain();
+		effect.setPosition(4f,2f);
+		effects.add(effect);
+		
+		PooledEffect effect2 = pool.obtain();
+		effect2.setPosition(-3f,19f);
+		effects.add(effect2);
+		
+		traps.add(new Trap(world, new Vector2(-3f,19f)));
+		
 		trapTexture = manager.get("trap.png", Texture.class);
+		
 	}
 
 	public void draw(SpriteBatch batch){ 
@@ -89,14 +140,25 @@ public class Level {
 	    	}
 	    }
 	    
+	    //Draw fields
+	    TextureRegion boostReg = new TextureRegion(boostTexture);
+		boostTexture.setWrap(TextureWrap.Repeat, TextureWrap.Repeat);
+	    Iterator<Field> e = fields.iterator();
+	    while (e.hasNext()){
+	    	Field field = e.next();
+	    	batch.draw(boostTexture, field.getDrawPos().x, field.getDrawPos().y, field.getSize().x*2f, field.getSize().y*2f, 0, 0, field.getSize().x, field.getSize().y);	    
+	    }
+	    
+	    
 	    //Draw walls
 	    TextureRegion tst = new TextureRegion(wallTexture);
+		wallTexture.setWrap(TextureWrap.Repeat, TextureWrap.Repeat);
+	    
 	    Iterator<Wall> b = walls.iterator();
 	    while (b.hasNext()){
 	    	Wall wall = b.next();
 	    	if(wall.isRotating()){
-	    		System.out.println(wall.getBody().getAngle()*MathUtils.radiansToDegrees % 360);
-		    	batch.draw(tst, wall.getDrawPos().x, wall.getDrawPos().y, 0, 0, wall.getSize().x, wall.getSize().y, 2, 2, wall.getBody().getAngle()*MathUtils.radiansToDegrees % 360);
+		    	batch.draw(tst, wall.getDrawPos().x+(wall.getSize().x/2), wall.getDrawPos().y+(wall.getSize().y/2), 1.5f, 0.5f, wall.getSize().x, wall.getSize().y, 2, 2, wall.getBody().getAngle()*MathUtils.radiansToDegrees % 360);
 	    	}else{
 		    	batch.draw(wallTexture, wall.getDrawPos().x, wall.getDrawPos().y, wall.getSize().x*2f, wall.getSize().y*2f, 0, 0, wall.getSize().x*6, wall.getSize().y*6);	    
 	    	}
@@ -106,7 +168,25 @@ public class Level {
 	    Iterator<Trap> c = traps.iterator();
 	    while (c.hasNext()){
 	    	Trap trap = c.next();
-	    	batch.draw(trapTexture,trap.getPosition().x-(trap.getSize().x),trap.getPosition().y-(trap.getSize().y),trap.getSize().x*2,trap.getSize().y*2);
+	    	//batch.draw(trapTexture,trap.getPosition().x-(trap.getSize().x),trap.getPosition().y-(trap.getSize().y),trap.getSize().x*2,trap.getSize().y*2);
+	    }
+	    
+	    //Draw goal
+	    TextureRegion goalReg = new TextureRegion(goalTexture);
+		goalTexture.setWrap(TextureWrap.Repeat, TextureWrap.Repeat);
+	    Iterator<Goal> d = goals.iterator();
+	    while (d.hasNext()){
+	    	Goal goal = d.next();
+	    	batch.draw(goalTexture, goal.getDrawPos().x, goal.getDrawPos().y, goal.getSize().x*2f, goal.getSize().y*2f, 0, 0, goal.getSize().x, goal.getSize().y);	    
+	    }
+	    
+	    for (int i = effects.size - 1; i >= 0; i--) {
+	        PooledEffect effect = effects.get(i);
+	        effect.draw(batch, 0.16f);
+	        if (effect.isComplete()) {
+	            effect.free();
+	            effects.removeIndex(i);
+	        }
 	    }
 	    
 	    

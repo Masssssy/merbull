@@ -24,7 +24,11 @@ public class Wall {
 		drawPos = new Vector2(pos.x-((size.x*2)/2), pos.y-(size.y*2)/2);
 		
 		bodyDef = new BodyDef();
-		bodyDef.type = BodyType.DynamicBody; 
+		if(rotation != 0){
+			bodyDef.type = BodyType.DynamicBody; 
+		}else{
+			bodyDef.type = BodyType.StaticBody;
+		}
 		bodyDef.fixedRotation = true;
 		bodyDef.position.set(pos);
 		wallBody = world.createBody(bodyDef);

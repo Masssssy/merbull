@@ -9,7 +9,7 @@ public class Database {
 	public Database() {
 		try
 	       {
-
+			   //pls no dropperino dropTable();
 	           String url = "jdbc:mysql://us-cdbr-iron-east-02.cleardb.net/ad_255e532429611b1";
 	           Class.forName ("com.mysql.jdbc.Driver");
 	           conn = DriverManager.getConnection (url,"bd9fedae0c295a","b0243d5d");
@@ -17,7 +17,8 @@ public class Database {
 	           
 	           String myTable = "CREATE TABLE IF NOT EXISTS Scoreboard (" 
 	                   + "id INT(64) NOT NULL AUTO_INCREMENT,"  
-	                   + "name VARCHAR(30)," 
+	                   + "name VARCHAR(30),"
+	                   + "level INT(30)," 
 	                   + "bounces INT(30),"  
 	                   + "time FLOAT,"
 	                   + "weighted_score FLOAT,"
@@ -47,9 +48,12 @@ public class Database {
 	public boolean addEntry(String name, int bounces, float time) {
 		try {
 			Statement st = (Statement) conn.createStatement(); 
-
-		     st.executeUpdate("INSERT INTO Scoreboard(name, bounces, time, weighted_score) " +
-		     "VALUES ('" + name + "', '" + bounces + "', '" + time + "', '" + bounces/time + "')");
+			//tmp level var
+			int level = 1;
+			
+			time = (float)Math.round(time * 100) / 100;
+		     st.executeUpdate("INSERT INTO Scoreboard(name, level, bounces, time, weighted_score) " +
+		     "VALUES ('" + name + "', '"+ level + "', '" + (Level.getMaxBounces()-bounces) + "', '" + time + "', '" + (bounces*100)/time + "')");
 		     
 		     return true;
 		}
@@ -71,13 +75,13 @@ public class Database {
         }
 	}
 	
-	public Scoreboard getTop10() {
+	public Scoreboard getTop10(int level) {
 		Scoreboard sb = new Scoreboard();
 		
 		try {
 			Statement st = (Statement) conn.createStatement(); 
 
-		     ResultSet rs = st.executeQuery("SELECT * FROM Scoreboard ORDER BY weighted_score DESC LIMIT 10;");
+		     ResultSet rs = st.executeQuery("SELECT * FROM Scoreboard WHERE level=level ORDER BY weighted_score DESC LIMIT 10;");
 		     
 		     
 		     while(rs.next()) { 
@@ -103,4 +107,37 @@ public class Database {
 		
 		return sb;
 	}
+	
+	public void dropTable() {
+		try
+	       {
+
+	           String url = "jdbc:mysql://us-cdbr-iron-east-02.cleardb.net/ad_255e532429611b1";
+	           Class.forName ("com.mysql.jdbc.Driver");
+	           conn = DriverManager.getConnection (url,"bd9fedae0c295a","b0243d5d");
+	           System.out.println ("Database connection established");
+	           
+	           String myTable = "DROP TABLE SCOREBOARD";  
+	               try {
+	                   Class.forName("com.mysql.jdbc.Driver");
+	                   Statement st = conn.createStatement();
+
+	                   st.execute(myTable);
+	                   System.out.println("Table Removed");
+	               }
+	               catch (SQLException e ) {
+	                   System.out.println("An error has occurred on Table removing");
+	                   System.out.println(e);
+	               }
+	               catch (ClassNotFoundException e) {
+	                   System.out.println("An Mysql drivers were not found");
+	               }
+	       }
+	       catch (Exception e)
+	       {
+	           e.printStackTrace();
+
+	       }
+	}
+	
 }

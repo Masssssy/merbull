@@ -20,7 +20,7 @@ public class MyGame extends Game {
         font.scale(3);
     	
 		music = Gdx.audio.newMusic(Gdx.files.internal("loop.ogg"));	
-		//music.play();
+		music.play();
 		music.setLooping(true);
 		
         this.setScreen(new SplashScreen(this));

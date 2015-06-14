@@ -1,5 +1,7 @@
 package com.martinfredriksson.merbull;
 
+import javax.swing.GroupLayout.Alignment;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.Input.Keys;
@@ -15,6 +17,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
+import com.badlogic.gdx.scenes.scene2d.ui.TextField;
 
 public class MenuScreen implements Screen {
 	
@@ -24,6 +27,8 @@ public class MenuScreen implements Screen {
 	Stage stage;
 	Table table;
 	Skin skin;
+	
+	public String player;
 	
 	public MenuScreen(final MyGame game){
 		this.game = game;
@@ -36,19 +41,39 @@ public class MenuScreen implements Screen {
 		//Table layout for menu
 	    table = new Table();
 	    table.setFillParent(true);
-	    stage.addActor(table);
-	   
+	    
+	    if(player == null)
+	    	player = "Name";
+	    
+	    TextButton start = new TextButton("Start!", skin);
+	    final TextField name = new TextField(player, skin);
+	    TextButton highscore = new TextButton("Highscores", skin);
 
-	    TextButton button1 = new TextButton("Button 1", skin);
-	    button1.addListener(new InputListener() {
+	    //name.setAlignment(Align.center);
+	    
+	    highscore.addListener(new InputListener() {
+	    	public boolean touchDown (InputEvent event, float c, float y, int pointer, int button) {
+	    		game.setScreen(new EndScreen(game, 1, player, 0, 0));
+	    		dispose();
+	    		return false;
+	    	}
+	    });
+	    
+	    start.addListener(new InputListener() {
 			public boolean touchDown (InputEvent event, float x, float y, int pointer, int button) {
-				System.out.println("button 1 pressed");
+				player = name.getText();
+				game.setScreen(new LoadScreen(game, new Level(player))); //GameScreen needs level so it knows what level it should run
+	            dispose();
 				return false;
 			}
 		});
-	    table.add(button1);
 	    
-	    
+	    table.add(name).width(250).height(50).padBottom(10f);
+	    table.row();
+	    table.add(start).width(250).height(50).padBottom(10f);
+	    table.row();
+	    table.add(highscore).width(250).height(50).padBottom(10f);
+	    stage.addActor(table);
 		
         camera = new OrthographicCamera();
         camera.setToOrtho(false, 720, 1280);
@@ -62,7 +87,7 @@ public class MenuScreen implements Screen {
 
 	@Override
 	public void render(float delta) {
-        Gdx.gl.glClearColor(1, 102/255f, 102/255f, 1);
+        Gdx.gl.glClearColor(101/255f, 182/255f, 241/255f, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
         camera.update();
@@ -70,14 +95,6 @@ public class MenuScreen implements Screen {
         
         
         stage.draw();
-        game.batch.begin();
-        game.font.draw(game.batch, "Menu screen", 100, 100);
-        game.batch.end();
-        
-        if (Gdx.input.isKeyPressed(Keys.SPACE)) {
-            game.setScreen(new LoadScreen(game, new Level())); //GameScreen needs level so it knows what level it should run
-            dispose();
-        }
 	}
 
 	@Override

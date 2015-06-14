@@ -30,8 +30,13 @@ public class LoadScreen implements Screen {
 		
 		manager.load("ball.png", Texture.class);
 		
+		manager.load("goal.png", Texture.class);
+		
+		manager.load("boost.png", Texture.class);
+		
 		//for now all textures will also always load
 		manager.load("wall.png", Texture.class);
+		manager.load("wall_black.png", Texture.class);
 		
 		manager.load("trap.png", Texture.class);
 		

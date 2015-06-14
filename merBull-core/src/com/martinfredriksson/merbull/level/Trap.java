@@ -1,6 +1,8 @@
 package com.martinfredriksson.merbull.level;
 
 
+import com.badlogic.gdx.graphics.g2d.ParticleEffectPool;
+import com.badlogic.gdx.graphics.g2d.ParticleEffectPool.PooledEffect;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.BodyDef;
@@ -22,7 +24,7 @@ public class Trap{
 	Body trapBody;
 	
 	
-	public Trap(World world, Vector2 pos, Vector2 size, float rotation){
+	public Trap(World world, Vector2 pos, Vector2 size,float rotation){
 		this.pos = (new Vector2(0,0));
 		this.size = size;
 		

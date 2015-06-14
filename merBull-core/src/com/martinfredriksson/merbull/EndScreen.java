@@ -27,23 +27,30 @@ public class EndScreen implements Screen {
 	Sound gameOver;
 	Sound victory;
 	String buttonText;
+
 	
+	int bounces;	
 	float time = 0;
+	long gameTime;
+	String name;
 	
 	private boolean doOnce = true;
 	
-	private boolean win;
+	private int win;
 	
-	public EndScreen(final MyGame game, boolean win){
+	public EndScreen(final MyGame game, int win, String name, int bounces, long gameTime){
 		this.game = game;
 		this.win = win;
+		this.gameTime = gameTime;
+		this.bounces = bounces;
+		this.name = name;
 		
 		game.music.pause();
-		if(!win){
+		if(win ==2){
 			gameOver = Gdx.audio.newSound(Gdx.files.internal("gameover.ogg"));
 			gameOver.play(1.0f);
 			buttonText = "Try again";
-		}else{
+		}else if(win == 1){
 			victory = Gdx.audio.newSound(Gdx.files.internal("victory.ogg"));
 			victory.play(1.0f);
 			buttonText = "Next level";
@@ -84,10 +91,10 @@ public class EndScreen implements Screen {
         
         stage.draw();
         game.batch.begin();
-        if(win){
+        if(win == 1){
             game.font.draw(game.batch, "Level cleared! =)", 100, 1200);
             game.font.draw(game.batch, "Highscores", 100, 1000);
-        }else{
+        }else if(win == 2){
         	game.font.draw(game.batch, "Highscores", 100, 1000);
             game.font.draw(game.batch, "You failed =(", 100, 1200);
         }
@@ -102,7 +109,7 @@ public class EndScreen implements Screen {
 
         
         if (Gdx.input.isKeyPressed(Keys.SPACE)) {
-        	//game.music.play();
+        	game.music.play();
             game.setScreen(new MenuScreen(game));
             dispose();
         }
@@ -132,12 +139,13 @@ public class EndScreen implements Screen {
 	}
 
 	private void printScore(){
-		gameOver = Gdx.audio.newSound(Gdx.files.internal("gameover.ogg"));
-		gameOver.play(1.0f);
+		//gameOver = Gdx.audio.newSound(Gdx.files.internal("gameover.ogg"));
+		//gameOver.play(1.0f);
 		Database db = new Database();
-		db.addEntry("name", 3, 0.02f);
+		db.addEntry(name, bounces, (float) time);
 		
-		Scoreboard sb = db.getTop10();
+		int levelId = 1;
+		Scoreboard sb = db.getTop10(levelId);
 		table = sb;
 		db.closeConn();
 		
@@ -157,9 +165,9 @@ public class EndScreen implements Screen {
 	@Override
 	public void dispose() {
 		stage.dispose();
-		if(!win){
+		if(win == 2){
 			gameOver.dispose();
-		}else{
+		}else if(win == 1){
 			victory.dispose();
 		}
 	}

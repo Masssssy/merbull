@@ -66,7 +66,14 @@ public class GameScreen implements Screen, InputProcessor{
 		cam.position.set(0,10,0);
 		startTime = System.currentTimeMillis();
 	}
-
+	
+	public long getTime() {
+		return startTime;
+	}
+	
+	public Level getLevel() {
+		return this.level;
+	}
 
 	@Override
 	public void render (float delta) {
@@ -74,12 +81,12 @@ public class GameScreen implements Screen, InputProcessor{
 		long levelTime = System.currentTimeMillis() - startTime;
 		
 		if(level.gameOver()){
-			game.setScreen(new EndScreen(game, false)); 
+			game.setScreen(new EndScreen(game, 2, level.getPlayer(), level.getBounces(), getTime())); 
             dispose();
 		}
 		
 		if(level.hasWon()){
-			game.setScreen(new EndScreen(game, true));
+			game.setScreen(new EndScreen(game, 1, level.getPlayer(), level.getBounces(), getTime()));
 			dispose();
 		}
 		
@@ -87,7 +94,7 @@ public class GameScreen implements Screen, InputProcessor{
 		updateGame(level, delta);
 		updateCamera();
 		
-		Gdx.gl.glClearColor(190/255f, 223/255f, 136/255f, 0);
+		Gdx.gl.glClearColor(70/255f, 70/255f, 70/255f, 0);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		world.step(1/300f, 6, 2);
 		game.batch.setProjectionMatrix(cam.combined);
