@@ -49,7 +49,7 @@ public class LoadScreen implements Screen {
 		
 	   if(manager.update()) {
 	          // we are done loading, let's move to another screen!
-			if(Gdx.input.isKeyPressed(Input.Keys.SPACE)){
+			if(Gdx.input.isKeyPressed(Input.Keys.SPACE) || Gdx.input.isTouched()){
 	            game.setScreen(new GameScreen(game, level)); //GameScreen needs level so it knows what level it should run
 	            dispose();
 			}
