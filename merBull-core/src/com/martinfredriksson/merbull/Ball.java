@@ -14,10 +14,13 @@ public class Ball{
 	
 	BodyDef bodyDef;
 	
+	private float maxSpeed = 10f;
+	
 	private Texture player;
 	private Vector2 pos;
 	private float size;
 	private boolean shield = true;
+	public int state;
 	
     //final short CAT_PLAYER = 0x0001;
 	//private short MASK_PLAYER  = 0x0002;
@@ -59,6 +62,7 @@ public class Ball{
 	//Constructor that uses default player size of 1
 	public Ball(World world, Vector2 pos){
 		this(world, pos, 1f);
+		state = 0;
 	}
 	
 	public void update(float delta) {

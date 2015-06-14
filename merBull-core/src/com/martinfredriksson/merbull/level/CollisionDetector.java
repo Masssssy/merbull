@@ -75,7 +75,7 @@ public class CollisionDetector implements ContactListener {
 		Fixture fixB = contact.getFixtureB();
 		
 		if(fixA.getBody().getUserData() == "playerBall" && fixB.getBody().getUserData() == "fricfield" || 
-				   fixB.getBody().getUserData() == "fricfield" && fixB.getBody().getUserData() == "playerBall"){
+				   fixA.getBody().getUserData() == "fricfield" && fixB.getBody().getUserData() == "playerBall"){
 					//Player and fricfield stops colliding
 					System.out.println("fricfield and player ended contact");
 					level.getBall().getBody().setLinearDamping(0f);
@@ -83,7 +83,7 @@ public class CollisionDetector implements ContactListener {
 		}
 		
 		if(fixA.getBody().getUserData() == "playerBall" && fixB.getBody().getUserData() == "accfield" || 
-				   fixB.getBody().getUserData() == "accfield" && fixB.getBody().getUserData() == "playerBall"){
+				   fixB.getBody().getUserData() == "accfield" && fixA.getBody().getUserData() == "playerBall"){
 					//Player and fricfield collided
 					System.out.println("accfield and player ended collision");
 					level.getBall().getBody().setLinearDamping(0f);

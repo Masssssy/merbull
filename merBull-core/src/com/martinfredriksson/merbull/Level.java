@@ -1,5 +1,6 @@
 package com.martinfredriksson.merbull;
 
+import java.awt.Color;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -7,6 +8,9 @@ import java.util.List;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.World;
@@ -34,6 +38,7 @@ public class Level {
 	private int allowedBounces;
 	private boolean shield = true;
 	private boolean win = false;
+	private Vector2 angle;
 	
 	public Level(){
 		//IF TIME:
@@ -56,11 +61,12 @@ public class Level {
 		walls.add(new Wall(world, new Vector2(1f, 10f), new Vector2(-9f, 5f)));
 		walls.add(new Wall(world, new Vector2(1f, 10f), new Vector2(9f, 5f)));
 		walls.add(new Wall(world, new Vector2(3f,1f), new Vector2(-3f,10f), 2f));
+		walls.add(new Wall(world, new Vector2(3f,1f), new Vector2(4f,10f), 2f));
 		
 		wallTexture = manager.get("wall.png", Texture.class);
 		
 		fields.add(new Field(world,new Vector2(5f,5f), new Vector2(0f,10f), 2f, true));
-		fields.add(new Field(world,new Vector2(5f,5f), new Vector2(0f,30f), 2f, true));
+		goals.add(new Goal(world,new Vector2(5f,5f), new Vector2(0f,30f)));
 		
 		//Add death trap
 		traps.add(new Trap(world, new Vector2(4f,2f)));
@@ -84,10 +90,16 @@ public class Level {
 	    }
 	    
 	    //Draw walls
+	    TextureRegion tst = new TextureRegion(wallTexture);
 	    Iterator<Wall> b = walls.iterator();
 	    while (b.hasNext()){
 	    	Wall wall = b.next();
-	    	batch.draw(wallTexture, wall.getDrawPos().x, wall.getDrawPos().y, wall.getSize().x*2f, wall.getSize().y*2f, 0, 0, wall.getSize().x*6, wall.getSize().y*6);
+	    	if(wall.isRotating()){
+	    		System.out.println(wall.getBody().getAngle()*MathUtils.radiansToDegrees % 360);
+		    	batch.draw(tst, wall.getDrawPos().x, wall.getDrawPos().y, 0, 0, wall.getSize().x, wall.getSize().y, 2, 2, wall.getBody().getAngle()*MathUtils.radiansToDegrees % 360);
+	    	}else{
+		    	batch.draw(wallTexture, wall.getDrawPos().x, wall.getDrawPos().y, wall.getSize().x*2f, wall.getSize().y*2f, 0, 0, wall.getSize().x*6, wall.getSize().y*6);	    
+	    	}
 	    }
 	    
 	    //Draw death traps
@@ -96,6 +108,7 @@ public class Level {
 	    	Trap trap = c.next();
 	    	batch.draw(trapTexture,trap.getPosition().x-(trap.getSize().x),trap.getPosition().y-(trap.getSize().y),trap.getSize().x*2,trap.getSize().y*2);
 	    }
+	    
 	    
 	}
 
@@ -138,4 +151,21 @@ public class Level {
 		}
 	}
 	
+
+	
+	public void LaunchControl(Ball b, Vector2 vc){
+		if(b.state == 0) {
+			b.state++;
+		}
+		else if(b.state == 1) {
+			angle = vc.nor();
+			b.state++;
+		}
+		else if(b.state == 2) {
+			angle = angle.scl(vc.len2());
+			System.out.println(vc.len2());
+			b.setVelocity(angle);
+			b.state++;
+		}
+	}	
 }

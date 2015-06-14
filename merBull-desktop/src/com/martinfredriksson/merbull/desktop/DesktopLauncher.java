@@ -11,7 +11,7 @@ public class DesktopLauncher {
 		config.height = 640;
 		config.width = 360;
 		//Use HDPI on OSX
-		config.useHDPI = true;
+		config.useHDPI = false;
 		new LwjglApplication(new MyGame(), config);
 	}
 }

@@ -36,7 +36,7 @@ public class Wall {
 		  
 		FixtureDef boxFixtureDef = new FixtureDef();
 		boxFixtureDef.shape = boxShape;
-		boxFixtureDef.density = 1;
+		boxFixtureDef.density = 100f;
 		//Setup collision filters and rules
 		boxFixtureDef.filter.categoryBits = CAT_WALLS;
 		wallBody.createFixture(boxFixtureDef);
@@ -53,5 +53,17 @@ public class Wall {
 	public Vector2 getDrawPos(){
 		return drawPos;
 	}
+	
+	public Body getBody(){
+		return wallBody;
+	}
+	
+	public boolean isRotating(){
+		if(wallBody.getAngularVelocity() > 0){
+			return true;
+		}
+		return false;
+	}
+	
 
 }

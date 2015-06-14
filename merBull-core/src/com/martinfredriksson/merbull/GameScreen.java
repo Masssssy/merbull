@@ -1,12 +1,16 @@
 package com.martinfredriksson.merbull;
 
 
+import java.awt.Color;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
@@ -70,7 +74,7 @@ public class GameScreen implements Screen, InputProcessor{
 		long levelTime = System.currentTimeMillis() - startTime;
 		
 		if(level.gameOver()){
-			game.setScreen(new EndScreen(game, false)); //GameScreen needs level so it knows what level it should run
+			game.setScreen(new EndScreen(game, false)); 
             dispose();
 		}
 		
@@ -91,6 +95,18 @@ public class GameScreen implements Screen, InputProcessor{
 			 	level.draw(game.batch);
 			game.batch.end();
 		debugRenderer.render(world, cam.combined);
+		
+	    //Draw line if ball state is 1
+	    if(level.getBall().state == 1){
+	    	ShapeRenderer sr = new ShapeRenderer();
+	        sr.setProjectionMatrix(cam.combined);
+
+	        sr.begin(ShapeType.Filled);
+	        Vector3 tmp = new Vector3 (Gdx.input.getX(), Gdx.input.getY(), 0);
+	        cam.unproject(tmp);
+	        	sr.rectLine(new Vector2(level.getBall().getPosition().x, level.getBall().getPosition().y), new Vector2(tmp.x, tmp.y), 0.1f);
+	        sr.end();
+	    }
 	}
 	
 
@@ -102,7 +118,7 @@ public class GameScreen implements Screen, InputProcessor{
 
 
 	private void updateGame(Level level, float delta){
-		
+		level.getBall().update(delta);
 	}
 	
 	
@@ -173,9 +189,7 @@ public class GameScreen implements Screen, InputProcessor{
 		Vector3 tmp = new Vector3(screenX, screenY, 0);
 		cam.unproject(tmp);
 		Vector2 tmp2 = new Vector2(tmp.x, tmp.y);
-		tmp2.nor();
-		System.out.println(tmp2);
-		level.getBall().setVelocity(new Vector2(tmp2.x*15, tmp2.y*15));
+		level.LaunchControl(level.getBall(), tmp2);
 		return false;
 	}
 
