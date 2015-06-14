@@ -11,6 +11,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.World;
 import com.martinfredriksson.merbull.level.Field;
+import com.martinfredriksson.merbull.level.Goal;
 import com.martinfredriksson.merbull.level.Trap;
 import com.martinfredriksson.merbull.level.Wall;
 
@@ -21,6 +22,7 @@ public class Level {
 	List<Wall> walls = new ArrayList<Wall>();
 	List<Field> fields = new ArrayList<Field>();
 	List<Trap> traps = new ArrayList<Trap>();
+	List<Goal> goals = new ArrayList<Goal>();
 	
 	Texture ballTexture;
 	Texture ballShieldTexture;
@@ -31,6 +33,7 @@ public class Level {
 	private boolean gameOver = false;
 	private int allowedBounces;
 	private boolean shield = true;
+	private boolean win = false;
 	
 	public Level(){
 		//IF TIME:
@@ -52,13 +55,15 @@ public class Level {
 		//Add some walls
 		walls.add(new Wall(world, new Vector2(1f, 10f), new Vector2(-9f, 5f)));
 		walls.add(new Wall(world, new Vector2(1f, 10f), new Vector2(9f, 5f)));
+		walls.add(new Wall(world, new Vector2(3f,1f), new Vector2(-3f,10f), 2f));
+		
 		wallTexture = manager.get("wall.png", Texture.class);
 		
 		fields.add(new Field(world,new Vector2(5f,5f), new Vector2(0f,10f), 2f, true));
 		fields.add(new Field(world,new Vector2(5f,5f), new Vector2(0f,30f), 2f, true));
 		
 		//Add death trap
-		traps.add(new Trap(world, new Vector2(4f,4f)));
+		traps.add(new Trap(world, new Vector2(4f,2f)));
 		trapTexture = manager.get("trap.png", Texture.class);
 	}
 
@@ -109,6 +114,14 @@ public class Level {
 	
 	public boolean gameOver(){
 		return gameOver;
+	}
+	
+	public void win(){
+		win = true;
+	}
+	
+	public boolean hasWon(){
+		return win;
 	}
 
 	public void reduceBounce() {

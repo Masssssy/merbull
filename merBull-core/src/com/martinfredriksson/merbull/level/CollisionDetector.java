@@ -53,6 +53,13 @@ public class CollisionDetector implements ContactListener {
 					System.out.println("reduce bounce count");
 					level.reduceBounce();
 		}
+		
+		if(fixA.getBody().getUserData() == "playerBall" && fixB.getBody().getUserData() == "goal" || 
+				   fixA.getBody().getUserData() == "goal" && fixB.getBody().getUserData() == "playerBall"){
+					//Player and fricfield collided
+					System.out.println("Yay, you win!");
+					level.win();
+		}
 		//Other collision checks
 		//if(....){
 		//Something collides with something

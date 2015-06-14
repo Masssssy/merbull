@@ -41,7 +41,7 @@ public class Ball{
 		circleShape = new CircleShape();
 		circleShape.setRadius(size);
 		
-		this.setVelocity(new Vector2(40f,0f));
+		//this.setVelocity(new Vector2(3f,8f));
 		
 		FixtureDef boxFixtureDef = new FixtureDef();
 		boxFixtureDef.shape = circleShape;

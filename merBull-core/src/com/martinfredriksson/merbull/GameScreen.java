@@ -11,6 +11,12 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.badlogic.gdx.physics.box2d.World;
+import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.scenes.scene2d.InputListener;
+import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.martinfredriksson.merbull.level.CollisionDetector;
@@ -22,7 +28,7 @@ public class GameScreen implements Screen, InputProcessor{
 	SpriteBatch batch;
 	MyGame game;
 	Level level;
-	GameUi gameUi;
+	
 	
 	CollisionDetector colDet;
 	
@@ -36,13 +42,9 @@ public class GameScreen implements Screen, InputProcessor{
 	
 	private long startTime;
 	
-	Vector3 leffe = new Vector3();
-	
 	public GameScreen(final MyGame game, Level level) {
 		this.game = game;
 		this.level = level;
-		gameUi = new GameUi();
-		
 		
 		Gdx.input.setInputProcessor(this);
 		
@@ -67,13 +69,16 @@ public class GameScreen implements Screen, InputProcessor{
 		//levelTime is time since level started
 		long levelTime = System.currentTimeMillis() - startTime;
 		
-		//System.out.println(Gdx.input.get);
-		
-		
 		if(level.gameOver()){
-			game.setScreen(new MenuScreen(game)); //GameScreen needs level so it knows what level it should run
+			game.setScreen(new EndScreen(game, false)); //GameScreen needs level so it knows what level it should run
             dispose();
 		}
+		
+		if(level.hasWon()){
+			game.setScreen(new EndScreen(game, true));
+			dispose();
+		}
+		
 		
 		updateGame(level, delta);
 		updateCamera();
@@ -85,38 +90,19 @@ public class GameScreen implements Screen, InputProcessor{
 			game.batch.begin();
 			 	level.draw(game.batch);
 			game.batch.end();
-		gameUi.draw();
 		debugRenderer.render(world, cam.combined);
 	}
 	
 
 	private void updateCamera() {
-		/*switch(level.player.getDirection()){
-		case UP:
-			leffe.set(level.player.getPosition().x, level.player.getPosition().y+13, 0);
-			break;
-		case DOWN: 
-			leffe.set(level.player.getPosition().x, level.player.getPosition().y-13, 0);
-			break;
-		case LEFT:
-			leffe.set(level.player.getPosition().x-7, level.player.getPosition().y, 0);
-			break;
-		case RIGHT: 
-			leffe.set(level.player.getPosition().x+7, level.player.getPosition().y, 0);
-			break;
-		}
-		
-		
-		//cam.position.lerp(leffe, 0.04f);
-			
-		
-		
-		//cam.update(); */
+		Vector3 camPos = new Vector3(level.getBall().getPosition().x, level.getBall().getPosition().y+15, 0);
+		cam.position.lerp(camPos, 0.1f);
+		cam.update(); 
 	}
 
 
 	private void updateGame(Level level, float delta){
-
+		
 	}
 	
 	
@@ -157,8 +143,6 @@ public class GameScreen implements Screen, InputProcessor{
 	public void dispose() {
 		//Things to remove when the gameScreen is disposed
 		level.manager.dispose();
-		//gameUi.dispose();
-		
 	}
 
 
@@ -186,6 +170,12 @@ public class GameScreen implements Screen, InputProcessor{
 	@Override
 	public boolean touchDown(int screenX, int screenY, int pointer, int button) {
 		System.out.println("x: " + screenX + " y: " + screenY);
+		Vector3 tmp = new Vector3(screenX, screenY, 0);
+		cam.unproject(tmp);
+		Vector2 tmp2 = new Vector2(tmp.x, tmp.y);
+		tmp2.nor();
+		System.out.println(tmp2);
+		level.getBall().setVelocity(new Vector2(tmp2.x*15, tmp2.y*15));
 		return false;
 	}
 
